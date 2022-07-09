@@ -44,6 +44,8 @@
 - [dev-drprasad/delete-older-releases](https://github.com/dev-drprasad/delete-older-releases)
 - [peter-evans/repository-dispatch](https://github.com/peter-evans/repository-dispatch)
 - [P3TERX/Actions-OpenWrt](https://github.com/P3TERX/Actions-OpenWrt)
+- [gl-inet/gl-infra-builder](https://github.com/gl-inet/gl-infra-builder)
+- [JiaY-shi/build-gl](https://github.com/JiaY-shi/build-gl.inet)
 
 ## License
 
