@@ -58,8 +58,6 @@ packages:
   - luci-app-ramfree
   # 流量智能队列管理(QOS)
   - luci-app-sqm
-  # KMS服务器设置
-  - luci-app-vlmcsd
   # 迅雷快鸟
   - luci-app-xlnetacc
   # 实时流量监测
