@@ -14,9 +14,9 @@ packages:
   # smartdns DNS防污染
   - luci-app-smartdns
   # 修改老竭力主题名
-  - luci-theme-argonne
-  # argonne主题设置
-  - luci-app-argonne-config
+  - luci-theme-argon
+  # argon主题设置
+  - luci-app-argon-config
   # 解锁网易云音乐
   - luci-app-unblockneteasemusic
   # 终端
