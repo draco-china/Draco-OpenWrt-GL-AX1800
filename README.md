@@ -2,8 +2,11 @@
 # GL-AX1800 固件
 
 > 基于官方编译器 <https://github.com/gl-inet/gl-infra-builder> 构建, 支持官方界面
+
 > 暂时只能通过  openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar 升级
+
 > 暂时不支持进入uboot，选择openwrt-ipq807x-glinet_ax1800-squashfs-nand-factory.img 文件升级，等待官方修复
+
 > 不定时更新第三方软件源仓库，稳定后考虑使用 actions 自动更新
 
 [![](https://img.shields.io/github/release-date/Draco-china/Draco-OpenWrt-GL-AX1800?label=%E5%9B%BA%E4%BB%B6%E6%9B%B4%E6%96%B0)](https://github.com/Draco-china/Draco-OpenWrt-GL-AX1800/actions)
