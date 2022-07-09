@@ -3,6 +3,7 @@ name: Generate glinet-ax1800.yml
 
 on:
   repository_dispatch:
+
   schedule:
    - cron: 0 15 * * *
 
