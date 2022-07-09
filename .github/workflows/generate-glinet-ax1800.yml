@@ -1,0 +1,22 @@
+
+  name: Generate glinet-ax1800.yml
+
+on:
+  repository_dispatch:
+
+  schedule:
+   - cron: 0 15 * * *
+
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - run: node scripts/generate.js
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            personal_token: ${{ secrets.DEPLOY_KEY }}
+            publish_branch: master
+            publish_dir: ./
+            keep_files: true
