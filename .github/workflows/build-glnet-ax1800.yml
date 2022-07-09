@@ -64,8 +64,8 @@ jobs:
     - name: run setup.py
       run: |
         cd /workdir/gl-infra-builder
-        git config --global user.email "github-actions@github.com"
-        git config --global user.name "github-actions"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@github.com"
         python3 setup.py -c config-wlan-ap-5.4.yml
 
     - name: Download package
