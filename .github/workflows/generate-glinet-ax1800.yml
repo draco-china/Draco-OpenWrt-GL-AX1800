@@ -22,5 +22,6 @@ jobs:
           publish_dir: ./
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@github.com'
+          commit_message: ${{ github.event.head_commit.message }}
           exclude_assets: ''
           keep_files: true
