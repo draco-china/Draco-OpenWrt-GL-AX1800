@@ -3,9 +3,6 @@ profile: glinet_ax1800
 description: Build image for the GL.iNET AX1800
 image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
 feeds:
-  - name: immortalwrt_packages
-    uri: https://github.com/immortalwrt/packages.git
-    revision: bf04e7076f6a538201f0b77f65eac597cea66609
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     revision: ddf45cf3b5a82868cec10fcc2cddbbb1958340ef
