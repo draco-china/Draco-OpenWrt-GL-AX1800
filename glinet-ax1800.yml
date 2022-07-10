@@ -23,9 +23,6 @@ feeds:
   - name: small
     revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
     uri: https://github.com/kenzok8/small.git
-  - name: kiddin9
-    revision: 149d206f30f7c066a5c0abac6c46f0da8b1f1415
-    uri: https://github.com/kiddin9/openwrt-packages
 image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
 include:
   - wifi-ax
@@ -58,7 +55,6 @@ packages:
   - luci-app-transmission
   - luci-app-autoreboot
   - luci-app-jd-dailybonus
-  - luci-app-vsftpd
 profile: glinet_ax1800
 subtarget: ipq60xx
 target: ipq807x
