@@ -27,6 +27,7 @@ image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysup
 include:
   - wifi-ax
 packages:
+  - kmod-hwmon-pwmfan
   - wget-ssl
   - luci-app-advancedsetting
   - luci-app-diskman
