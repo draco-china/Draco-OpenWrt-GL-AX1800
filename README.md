@@ -1,5 +1,5 @@
 
-# GL-AX1800 固件
+# GL-AX1800 & GL-AXT1800 固件
 
 [![](https://img.shields.io/github/release-date/Draco-china/Draco-OpenWrt-GL-AX1800?label=%E5%9B%BA%E4%BB%B6%E6%9B%B4%E6%96%B0)](https://github.com/Draco-china/Draco-OpenWrt-GL-AX1800/actions)
 
