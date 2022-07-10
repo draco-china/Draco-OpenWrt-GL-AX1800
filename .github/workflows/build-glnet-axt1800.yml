@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build AX1800 OpenWrt
+name: Build AXT1800 OpenWrt
 
 on:
   repository_dispatch:
@@ -75,7 +75,7 @@ jobs:
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
         git config --global user.email "github-actions@github.com"
         git config --global user.name "github-actions"
-        ./scripts/gen_config.py glinet-ax1800 glinet_depends
+        ./scripts/gen_config.py glinet-axt1800 glinet_depends
         git clone https://github.com/gl-inet/glinet4.x.git /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
