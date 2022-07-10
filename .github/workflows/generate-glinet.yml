@@ -25,3 +25,9 @@ jobs:
           commit_message: ${{ github.event.head_commit.message }}
           exclude_assets: ''
           keep_files: true
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 3
