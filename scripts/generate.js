@@ -66,8 +66,8 @@ const GenerateYml = () => {
     const axt1800FilePath = path.resolve(process.cwd(), `glinet-axt1800.yml`);
 
     // 写入配置文件
-    fs.writeFileSync(ax1800FilePath, ax1800ConfigYml);
-    fs.writeFileSync(axt1800FilePath, axt1800ConfigYml);
+    fs.writeFileSync(ax1800FilePath, `---\n${ax1800ConfigYml}`);
+    fs.writeFileSync(axt1800FilePath, `---\n${axt1800ConfigYml}`);
   } catch (error) {
     console.log(error);
   } finally {
