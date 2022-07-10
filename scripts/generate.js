@@ -46,6 +46,10 @@ const GenerateYml = () => {
     axt1800Config.include = [];
 
     // 合并官方配置
+    ax1800Config.packages = ax1800Config.packages ? ax1800Config.packages.concat(ax1800ConfigCommon.packages) : ax1800ConfigCommon.packages;
+    axt1800Config.packages = axt1800Config.packages ? axt1800Config.packages.concat(axt1800ConfigCommon.packages) : axt1800ConfigCommon.packages;
+    ax1800ConfigCommon.packages = [];
+    axt1800ConfigCommon.packages = [];
     const ax1800ConfigMerge = _.merge(ax1800Config, ax1800ConfigCommon);
     const axt1800ConfigMerge = _.merge(axt1800Config, axt1800ConfigCommon);
 
