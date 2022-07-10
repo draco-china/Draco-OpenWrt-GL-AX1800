@@ -14,7 +14,7 @@ feeds:
     revision: aae95e1574ca75fccc0a7da5337f67d039a79b6b
   - name: small
     uri: https://github.com/kenzok8/small.git
-    revision: 7025b3265b7aaef4195eb80e7ea4c110a1fbb0d5
+    revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
 
 include:
   - target_wlan_ap-gl-ax1800-common-5-4
