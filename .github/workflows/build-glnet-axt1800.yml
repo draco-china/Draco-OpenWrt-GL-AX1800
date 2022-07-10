@@ -142,7 +142,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled() && !failure()
       run: |
-        echo "::set-output name=release_tag::AXT1800-$(date +"%Y.%m.%d-%H:%M")"
+        echo "::set-output name=release_tag::AXT1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
         echo "AXT1800 固件" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
