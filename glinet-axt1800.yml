@@ -1,7 +1,7 @@
 ---
 profile: glinet_axt1800
 description: Build image for the GL.iNET AXT1800
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysupgrade.tar
 feeds:
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
@@ -17,7 +17,7 @@ feeds:
     revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
 
 include:
-  - target_wlan_ap-gl-axt1800-common-5-4
+  - target_wlan_ap-gl-ax1800-common-5-4
 
 packages:
   # 系统高级设置
