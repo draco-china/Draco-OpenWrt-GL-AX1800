@@ -43,7 +43,7 @@ const GenerateYml = () => {
   fs.writeFileSync(filePath, `---
 profile: glinet_${model}
 description: Build image for the GL.iNET ${model.toLocaleUpperCase()}
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_${model}-squashfs-sysupgrade.tar
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
 feeds:
 ${config}
 
