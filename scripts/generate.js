@@ -43,12 +43,12 @@ const GenerateYml = () => {
   fs.writeFileSync(filePath, `---
 profile: glinet_${model}
 description: Build image for the GL.iNET ${model.toLocaleUpperCase()}
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_${model}-squashfs-sysupgrade.tar
 feeds:
 ${config}
 
 include:
-  - target_wlan_ap-gl-${model}-common-5-4
+  - target_wlan_ap-gl-ax1800-common-5-4
 
 ${packages}`);
 }
