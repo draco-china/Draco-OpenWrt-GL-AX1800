@@ -5,6 +5,10 @@ packages:
   - luci-app-diskman
   # clash的图形代理软件
   - luci-app-openclash
+  # passwall代理软件
+  - luci-app-passwall
+  # ssr-plus 代理软件
+  - luci-app-ssr-plus
   # 阿里云ddns插件
   - luci-app-aliddns
   # 依IP地址限速
@@ -49,3 +53,5 @@ packages:
   - luci-app-autoreboot
   # 京东签到服务
   - luci-app-jd-dailybonus
+  # FTP服务器
+  - luci-app-vsftpd
