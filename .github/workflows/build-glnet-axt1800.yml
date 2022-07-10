@@ -75,7 +75,7 @@ jobs:
         git config --global user.email "github-actions@github.com"
         git config --global user.name "github-actions"
         ./scripts/gen_config.py glinet-axt1800 glinet_depends
-        git clone https://github.com/gl-inet/glinet4.x.git /workdir/glinet
+        git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
