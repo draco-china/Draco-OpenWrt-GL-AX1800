@@ -1,29 +1,30 @@
 ---
+profile: glinet_axt1800
+target: ipq807x
+subtarget: ipq60xx
 description: Build image for the GL.iNET AXT1800
-diffconfig: |
-  CONFIG_KERNEL_IPQ_MEM_PROFILE=0
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysupgrade.tar
 feeds:
   - name: ipq807x
     path: ../../feeds/ipq807x
   - name: gl_feeds_common
-    revision: f4362cf288d723bae1d854976ef940730dc74bdf
     uri: https://github.com/gl-inet/gl-feeds.git
+    revision: f4362cf288d723bae1d854976ef940730dc74bdf
   - name: luci
-    revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
     uri: https://github.com/openwrt/luci.git
+    revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: immortalwrt_luci
-    revision: ddf45cf3b5a82868cec10fcc2cddbbb1958340ef
     uri: https://github.com/immortalwrt/luci.git
+    revision: ddf45cf3b5a82868cec10fcc2cddbbb1958340ef
   - name: lienol
-    revision: d607aef7267d3e3c9c13a74d3f40fbbbfd4020e1
     uri: https://github.com/Lienol/openwrt-package.git
+    revision: d607aef7267d3e3c9c13a74d3f40fbbbfd4020e1
   - name: kenzok8
-    revision: aae95e1574ca75fccc0a7da5337f67d039a79b6b
     uri: https://github.com/kenzok8/openwrt-packages.git
+    revision: bfa3825a6cd5f4e66feb1e45523e3c7d564af466
   - name: small
-    revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
     uri: https://github.com/kenzok8/small.git
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysupgrade.tar
+    revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
 include:
   - wifi-ax
 packages:
@@ -56,6 +57,5 @@ packages:
   - luci-app-transmission
   - luci-app-autoreboot
   - luci-app-jd-dailybonus
-profile: glinet_axt1800
-subtarget: ipq60xx
-target: ipq807x
+diffconfig: |
+  CONFIG_KERNEL_IPQ_MEM_PROFILE=0

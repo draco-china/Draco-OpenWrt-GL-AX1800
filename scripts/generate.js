@@ -3,6 +3,30 @@ const path = require('path');
 const exec = require('child_process').execSync;
 
 /**
+ * 合并对象 不改变原对象
+ * @param {*} target
+ * @param {*} source
+ * @returns
+ */
+ function deepmerge(target, source) {
+  if (!target) return source;
+  // deep clone
+  const newObj = Object.assign({}, target, source);
+  Object.keys(source).forEach((key) => {
+    const type = Object.prototype.toString.call(source[key]);
+    if (type === '[object Array]') {
+      newObj[key] = [...new Set([ ...(target[key] || []), ...source[key]])];
+    } else if (type === '[object Object]') {
+      newObj[key] = deepmerge(target[key], source[key]);
+    } else {
+      newObj[key] = target[key] || source[key];
+    }
+  });
+  return newObj;
+}
+
+
+/**
  * 生成 feeds 配置
  * @param {*} name
  * @param {*} uri
@@ -28,8 +52,6 @@ const GenerateYml = () => {
   try {
     exec(`npm install js-yaml`);
     const yaml = require('js-yaml');
-    exec(`npm install lodash`);
-    const _ = require('lodash');
 
     const glInfraBuilder = path.resolve(process.cwd(), 'gl-infra-builder')
     exec(`git clone --depth=1 https://github.com/gl-inet/gl-infra-builder -b main ${glInfraBuilder}`);
@@ -46,12 +68,8 @@ const GenerateYml = () => {
     axt1800Config.include = [];
 
     // 合并官方配置
-    ax1800Config.packages = ax1800Config.packages ? ax1800Config.packages.concat(ax1800ConfigCommon.packages) : ax1800ConfigCommon.packages;
-    axt1800Config.packages = axt1800Config.packages ? axt1800Config.packages.concat(axt1800ConfigCommon.packages) : axt1800ConfigCommon.packages;
-    ax1800ConfigCommon.packages = [];
-    axt1800ConfigCommon.packages = [];
-    const ax1800ConfigMerge = _.merge(ax1800Config, ax1800ConfigCommon);
-    const axt1800ConfigMerge = _.merge(axt1800Config, axt1800ConfigCommon);
+    let ax1800ConfigMerge = deepmerge(ax1800Config, ax1800ConfigCommon);
+    let axt1800ConfigMerge = deepmerge(axt1800Config, axt1800ConfigCommon);
 
     // 读取 feeds 配置文件
     const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
@@ -59,25 +77,32 @@ const GenerateYml = () => {
     const feeds = require(feedsPath).map(item => GenerateFeedsConfig(item.name, item.uri, item.branch));
 
     // 合并 feeds 配置
-    ax1800ConfigMerge.feeds = ax1800ConfigMerge.feeds ? ax1800ConfigMerge.feeds.concat(feeds) :feeds;
-    axt1800ConfigMerge.feeds= axt1800ConfigMerge.feeds ? axt1800ConfigMerge.feeds.concat(feeds) :feeds;
+    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {feeds});
+    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {feeds});
 
     // 读取 packages 配置文件
     const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.yml')
     const packagesConfig =  yaml.load(fs.readFileSync(packagesPath, 'utf8'));
 
     // 合并 packages 配置
-    ax1800ConfigMerge.packages = ax1800ConfigMerge.packages ? ax1800ConfigMerge.packages.concat(packagesConfig.packages) :packagesConfig.packages;
-    axt1800ConfigMerge.packages = axt1800ConfigMerge.packages ? axt1800ConfigMerge.packages.concat(packagesConfig.packages) :packagesConfig.packages;
+    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, packagesConfig);
+    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, packagesConfig);
 
     // 转换为 YAML
+    const sortKeys = ['profile', 'target', 'subtarget', 'description', 'image', 'feeds', 'include', 'packages', 'diffconfig'];
     const ax1800ConfigYml = yaml.dump(ax1800ConfigMerge, {
       lineWidth: -1,
-      sortKeys: true
+      sortKeys: (a, b) => {
+        const index = sortKeys.indexOf(a);
+        return index - sortKeys.indexOf(b);
+      }
     });
     const axt1800ConfigYml = yaml.dump(axt1800ConfigMerge, {
       lineWidth: -1,
-      sortKeys: true
+      sortKeys: (a, b) => {
+        const index = sortKeys.indexOf(a);
+        return index - sortKeys.indexOf(b);
+      }
     });
 
     // 生成配置文件路径
