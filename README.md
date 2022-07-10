@@ -17,7 +17,7 @@
 - 可自行更新 `scripts` 下的 `feeds.json` 和 `packges.yml`
   - `feeds.json` 第三方仓库地址配置
   - `packges.yml` 第三方软件包配置
-- 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml`
+- 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml` & `glinet-axt1800.yml`
 - 北京时间每天 `0:00` 定时编译，`Release` 中只保留最新版本
 - 历史版本在 `Actions` 中选择一个已经运行完成且成功的 `workflow` 在页面底部可以看到 `Annotations` 和 `Artifacts`
 - `Annotations` 中的网盘失效时间一般是 1-3 天, `Artifacts` 需要登录 Github 才能下载
