@@ -70,3 +70,4 @@ packages:
   - luci-app-autoreboot
   # 京东签到服务
   - luci-app-jd-dailybonus
+  - kmod-hwmon-pwmfan

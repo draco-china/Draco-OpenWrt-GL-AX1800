@@ -33,7 +33,10 @@ const GenerateYml = () => {
   const config = feeds.map(item => GenerateFeedsConfig(item.name, item.uri, item.branch)).join('\n');
   // 读取 packages 配置文件
   const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.yml')
-  const packages = fs.readFileSync(packagesPath, 'utf8');
+  let packages = fs.readFileSync(packagesPath, 'utf8');
+
+  if(model === 'axt1800') packages+='\n  - kmod-hwmon-pwmfan';
+  
   // 生成配置文件路径
   const filePath = path.resolve(process.cwd(), `glinet-${model}.yml`);
   // 写入配置文件
