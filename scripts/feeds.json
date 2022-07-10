@@ -18,10 +18,5 @@
       "name": "small",
       "uri": "https://github.com/kenzok8/small.git",
       "branch": "master"
-  },
-  {
-    "name": "kiddin9",
-    "uri": "https://github.com/kiddin9/openwrt-packages",
-    "branch": "master"
   }
 ]
