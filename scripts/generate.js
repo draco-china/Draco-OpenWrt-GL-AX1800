@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const exec = require('child_process').execSync;
-const model = process.argv[process.argv.length - 1];
-
 
 /**
  * 生成 feeds 配置
@@ -16,41 +14,69 @@ const model = process.argv[process.argv.length - 1];
   const revision = exec(`cd ${name} && git log -1 --pretty=%H`).toString().trim();
   exec(`cd ..`);
   exec(`rm -rf ${name}`);
-  const config = `  - name: ${name}
-    uri: ${uri}
-    revision: ${revision}`;
-  return config;
+  return {
+    name,
+    uri,
+    revision
+  };
 }
 
 /**
- * 生成 feeds 配置文件
+ * 生成编译配置文件
  */
 const GenerateYml = () => {
-  // 读取 feeds 配置文件
-  const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
-  const feeds = require(feedsPath);
-  // 生成 feeds 配置
-  const config = feeds.map(item => GenerateFeedsConfig(item.name, item.uri, item.branch)).join('\n');
-  // 读取 packages 配置文件
-  const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.yml')
-  let packages = fs.readFileSync(packagesPath, 'utf8');
+  try {
+    exec(`npm install js-yaml`);
+    const yaml = require('js-yaml');
 
-  if(model === 'axt1800') packages+='\n  - kmod-hwmon-pwmfan';
-  
-  // 生成配置文件路径
-  const filePath = path.resolve(process.cwd(), `glinet-${model}.yml`);
-  // 写入配置文件
-  fs.writeFileSync(filePath, `---
-profile: glinet_${model}
-description: Build image for the GL.iNET ${model.toLocaleUpperCase()}
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_${model}-squashfs-sysupgrade.tar
-feeds:
-${config}
+    const glInfraBuilder = path.resolve(process.cwd(), 'gl-infra-builder')
+    exec(`git clone --depth=1 https://github.com/gl-inet/gl-infra-builder -b main ${glInfraBuilder}`);
+    // 读取官方配置文件
+    const ax1800Config = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/target_wlan_ap-gl-ax1800-5-4.yml`, 'utf8'));
+    const axt1800Config = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/target_wlan_ap-gl-axt1800-5-4.yml`, 'utf8'));
 
-include:
-  - target_wlan_ap-gl-ax1800-common-5-4
+    // 读取 feeds 配置文件
+    const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
+    // 生成 feeds 配置
+    const feeds = require(feedsPath).map(item => GenerateFeedsConfig(item.name, item.uri, item.branch));
 
-${packages}`);
+    // 合并 feeds 配置
+    ax1800Config.feeds = ax1800Config.feeds ? ax1800Config.feeds.concat(packagesConfig.feeds) :feeds;
+    axt1800Config.feeds= axt1800Config.feeds ? axt1800Config.feeds.concat(packagesConfig.feeds) :feeds;
+
+    // 读取 packages 配置文件
+    const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.yml')
+    const packagesConfig =  yaml.load(fs.readFileSync(packagesPath, 'utf8'));
+
+    // 合并 packages 配置
+    ax1800Config.packages = ax1800Config.packages ? ax1800Config.packages.concat(packagesConfig.packages) :packagesConfig.packages;
+    axt1800Config.packages = axt1800Config.packages ? axt1800Config.packages.concat(packagesConfig.packages) :packagesConfig.packages;
+
+    // 转换为 YAML
+    const ax1800ConfigYml = yaml.dump(ax1800Config, {
+      lineWidth: -1
+    });
+
+    const axt1800ConfigYml = yaml.dump(axt1800Config, {
+      lineWidth: -1
+    });
+
+    // 生成配置文件路径
+    const ax1800FilePath = path.resolve(process.cwd(), `glinet-ax1800.yml`);
+    const axt1800FilePath = path.resolve(process.cwd(), `glinet-axt1800.yml`);
+
+    // 写入配置文件
+    fs.writeFileSync(ax1800FilePath, ax1800ConfigYml);
+    fs.writeFileSync(axt1800FilePath, axt1800ConfigYml);
+  } catch (error) {
+    console.log(error);
+  } finally {
+     // 清理文件
+     exec(`rm -rf gl-infra-builder`);
+     exec(`rm -rf node_modules`);
+     exec(`rm -rf package-lock.json`);
+     exec(`rm -rf package.json`);
+  }
 }
 
 GenerateYml();
