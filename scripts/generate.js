@@ -25,26 +25,6 @@ const exec = require('child_process').execSync;
   return newObj;
 }
 
-
-/**
- * 生成 feeds 配置
- * @param {*} name
- * @param {*} uri
- * @param {*} branch
- * @returns
- */
- const GenerateFeedsConfig = (name, uri, branch) => {
-  exec(`git clone --depth=1 ${uri} -b ${branch} ${name}`);
-  const revision = exec(`cd ${name} && git log -1 --pretty=%H`).toString().trim();
-  exec(`cd ..`);
-  exec(`rm -rf ${name}`);
-  return {
-    name,
-    uri,
-    revision
-  };
-}
-
 /**
  * 生成编译配置文件
  */
@@ -74,7 +54,7 @@ const GenerateYml = () => {
     // 读取 feeds 配置文件
     const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
     // 生成 feeds 配置
-    const feeds = require(feedsPath).map(item => GenerateFeedsConfig(item.name, item.uri, item.branch));
+    const feeds = require(feedsPath)
 
     // 合并 feeds 配置
     ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {feeds});

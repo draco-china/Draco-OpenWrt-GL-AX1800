@@ -15,19 +15,19 @@ feeds:
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: helloworld
     uri: https://github.com/fw876/helloworld.git
-    revision: f945d765e695637a8b71d88ad422157473259a13
+    branch: master
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
-    revision: ddf45cf3b5a82868cec10fcc2cddbbb1958340ef
+    branch: openwrt-21.02
   - name: lienol
     uri: https://github.com/Lienol/openwrt-package.git
-    revision: d607aef7267d3e3c9c13a74d3f40fbbbfd4020e1
+    branch: main
   - name: kenzok8
     uri: https://github.com/kenzok8/openwrt-packages.git
-    revision: 4abf1b8543f89b95eedd633a5dde2799776afd3b
+    branch: master
   - name: small
     uri: https://github.com/kenzok8/small.git
-    revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
+    branch: master
 include:
   - wifi-ax
 packages:

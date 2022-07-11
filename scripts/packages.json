@@ -12,10 +12,6 @@
     "desc": "clash的图形代理软件"
   },
   {
-    "name": "luci-app-openclash",
-    "desc": "clash的图形代理软件"
-  },
-  {
     "name": "luci-app-passwall",
     "desc": "passwall代理软件"
   },
@@ -50,10 +46,6 @@
   {
     "name": "luci-app-unblockneteasemusic",
     "desc": "解锁网易云音乐"
-  },
-  {
-    "name": "luci-app-openclash",
-    "desc": "clash的图形代理软件"
   },
   {
     "name": "luci-app-ttyd",
