@@ -25,7 +25,7 @@ module.exports = [
     desc: 'argon主题设置',
   },
   {
-    name: 'luci-app-unblockneteasemusic',
+    name: 'luci-app-unblockmusic',
     desc: '解锁网易云音乐',
   },
   {
