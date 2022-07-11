@@ -33,25 +33,20 @@ packages:
   - luci-app-advancedsetting
   - luci-app-diskman
   - luci-app-openclash
-  - luci-app-ddns
-  - luci-app-eqos
   - luci-app-smartdns
   - luci-theme-argon
   - luci-app-argon-config
   - luci-app-unblockneteasemusic
   - luci-app-ttyd
+  - luci-app-zerotier
   - luci-app-turboacc
   - luci-app-wol
-  - luci-app-zerotier
-  - luci-app-mwan3
-  - luci-app-mwan3helper
   - luci-app-ramfree
   - luci-app-sqm
   - luci-app-xlnetacc
-  - luci-app-wrtbwmon
   - luci-app-syncdial
   - luci-app-aria2
   - luci-app-autoreboot
-  - luci-app-dailybonus
+  - luci-app-samba4
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0
