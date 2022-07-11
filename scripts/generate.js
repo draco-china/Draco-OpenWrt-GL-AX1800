@@ -81,12 +81,13 @@ const GenerateYml = () => {
     axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {feeds});
 
     // 读取 packages 配置文件
-    const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.yml')
-    const packagesConfig =  yaml.load(fs.readFileSync(packagesPath, 'utf8'));
+    const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.json')
+    // 生成 packages 配置
+    const packages = require(packagesPath).map(item => item.name);
 
     // 合并 packages 配置
-    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, packagesConfig);
-    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, packagesConfig);
+    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {packages});
+    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {packages});
 
     // 转换为 YAML
     const sortKeys = ['profile', 'target', 'subtarget', 'description', 'image', 'feeds', 'include', 'packages', 'diffconfig'];

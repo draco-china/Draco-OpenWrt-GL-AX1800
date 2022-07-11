@@ -1,22 +1,27 @@
 [
   {
-      "name": "immortalwrt_luci",
-      "uri": "https://github.com/immortalwrt/luci.git",
-      "branch": "openwrt-21.02"
+    "name":"helloworld",
+    "uri":"https://github.com/fw876/helloworld.git",
+    "branch":"master"
   },
   {
-      "name": "lienol",
-      "uri": "https://github.com/Lienol/openwrt-package.git",
-      "branch": "main"
+    "name":"immortalwrt_luci",
+    "uri":"https://github.com/immortalwrt/luci.git",
+    "branch":"openwrt-21.02"
   },
   {
-      "name": "kenzok8",
-      "uri": "https://github.com/kenzok8/openwrt-packages.git",
-      "branch": "master"
+    "name":"lienol",
+    "uri":"https://github.com/Lienol/openwrt-package.git",
+    "branch":"main"
   },
   {
-      "name": "small",
-      "uri": "https://github.com/kenzok8/small.git",
-      "branch": "master"
+    "name":"kenzok8",
+    "uri":"https://github.com/kenzok8/openwrt-packages.git",
+    "branch":"master"
+  },
+  {
+    "name":"small",
+    "uri":"https://github.com/kenzok8/small.git",
+    "branch":"master"
   }
 ]
