@@ -100,10 +100,10 @@ module.exports = [
     name: 'luci-app-syncdial',
     desc: '多拨虚拟网卡',
   },
-  {
-    name: 'luci-app-serverchan',
-    desc: '微信/Telegram推送',
-  },
+  // {
+  //   name: 'luci-app-serverchan',
+  //   desc: '微信/Telegram推送',
+  // },
   // {
   //   name: 'luci-app-transmission',
   //   desc: 'BT下载工具',
