@@ -58,7 +58,7 @@ packages:
   - luci-app-xlnetacc
   - luci-app-wrtbwmon
   - luci-app-syncdial
-  - ' luci-app-transmission'
+  - luci-app-transmission
   - luci-app-aria2
   - luci-app-autoreboot
   - luci-app-dailybonus
