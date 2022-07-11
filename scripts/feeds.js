@@ -1,9 +1,9 @@
 module.exports = [
-  {
-    name: 'helloworld',
-    uri: 'https://github.com/fw876/helloworld.git',
-    branch: 'master',
-  },
+  // {
+  //   name: 'helloworld',
+  //   uri: 'https://github.com/fw876/helloworld.git',
+  //   branch: 'master',
+  // },
   {
     name: 'immortalwrt_luci',
     uri: 'https://github.com/immortalwrt/luci.git',

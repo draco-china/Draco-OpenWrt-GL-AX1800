@@ -12,18 +12,18 @@ module.exports = [
     name: 'luci-app-openclash',
     desc: 'clash的图形代理软件',
   },
-  {
-    name: 'luci-app-passwall',
-    desc: 'passwall代理软件',
-  },
-  {
-    name: 'luci-app-ssr-plus',
-    desc: 'ssr-plus 代理软件',
-  },
-  {
-    name: 'luci-app-aliddns',
-    desc: '阿里云ddns插件',
-  },
+  // {
+  //   name: 'luci-app-passwall',
+  //   desc: 'passwall代理软件',
+  // },
+  // {
+  //   name: 'luci-app-ssr-plus',
+  //   desc: 'ssr-plus 代理软件',
+  // },
+  // {
+  //   name: 'luci-app-aliddns',
+  //   desc: '阿里云ddns插件',
+  // },
   {
     name: 'luci-app-ddns',
     desc: '动态域名 DDNS',
@@ -52,10 +52,10 @@ module.exports = [
     name: 'luci-app-ttyd',
     desc: 'ttyd 终端',
   },
-  {
-    name: 'luci-app-filetransfer',
-    desc: '文件传输',
-  },
+  // {
+  //   name: 'luci-app-filetransfer',
+  //   desc: '文件传输',
+  // },
   {
     name: 'luci-app-turboacc',
     desc: 'Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)',
@@ -64,10 +64,10 @@ module.exports = [
     name: 'luci-app-wol',
     desc: 'wol 网络唤醒',
   },
-  {
-    name: 'luci-app-ddnsto',
-    desc: 'DDNSTO 内网穿透',
-  },
+  // {
+  //   name: 'luci-app-ddnsto',
+  //   desc: 'DDNSTO 内网穿透',
+  // },
   {
     name: 'luci-app-zerotier',
     desc: 'ZeroTier内网穿透',
@@ -101,9 +101,13 @@ module.exports = [
     desc: '多拨虚拟网卡',
   },
   {
-    name: 'luci-app-transmission',
-    desc: 'BT下载工具',
+    name: 'luci-app-serverchan',
+    desc: '微信/Telegram推送',
   },
+  // {
+  //   name: 'luci-app-transmission',
+  //   desc: 'BT下载工具',
+  // },
   {
     name: 'luci-app-aria2',
     desc: 'aria2下载工具',
@@ -116,12 +120,12 @@ module.exports = [
     name: 'luci-app-dailybonus',
     desc: '京东签到服务',
   },
-  {
-    name: 'luci-app-frpc',
-    desc: 'frpc 网络代理',
-  },
-  {
-    name: 'luci-app-frps',
-    desc: 'frps 网络代理',
-  },
+  // {
+  //   name: 'luci-app-frpc',
+  //   desc: 'frpc 网络代理',
+  // },
+  // {
+  //   name: 'luci-app-frps',
+  //   desc: 'frps 网络代理',
+  // },
 ];
