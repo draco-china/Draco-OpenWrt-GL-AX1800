@@ -50,11 +50,9 @@ const GenerateYml = () => {
     // 合并官方配置
     let ax1800ConfigMerge = deepmerge(ax1800Config, ax1800ConfigCommon);
     let axt1800ConfigMerge = deepmerge(axt1800Config, axt1800ConfigCommon);
-
-    // 读取 feeds 配置文件
-    const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
+    
     // 生成 feeds 配置
-    const feeds = require(feedsPath).map(item => {
+    const feeds = require('./feeds').map(item => {
       Object.keys(item).forEach(key => item[key].trim())
       return item;
     });
@@ -63,10 +61,8 @@ const GenerateYml = () => {
     ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {feeds});
     axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {feeds});
 
-    // 读取 packages 配置文件
-    const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.json')
     // 生成 packages 配置
-    const packages = require(packagesPath).map(item => item.name.trim());
+    const packages = require('./packages').map(item => item.name.trim());
 
     // 合并 packages 配置
     ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {packages});
