@@ -49,7 +49,6 @@ packages:
   - luci-app-xlnetacc
   - luci-app-wrtbwmon
   - luci-app-syncdial
-  - luci-app-serverchan
   - luci-app-aria2
   - luci-app-autoreboot
   - luci-app-dailybonus
