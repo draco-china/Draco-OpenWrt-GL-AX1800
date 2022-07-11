@@ -54,7 +54,10 @@ const GenerateYml = () => {
     // 读取 feeds 配置文件
     const feedsPath = path.resolve(process.cwd(), 'scripts', 'feeds.json')
     // 生成 feeds 配置
-    const feeds = require(feedsPath)
+    const feeds = require(feedsPath).map(item => {
+      Object.keys(item).forEach(key => item[key].trim())
+      return item;
+    });
 
     // 合并 feeds 配置
     ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {feeds});
@@ -63,7 +66,7 @@ const GenerateYml = () => {
     // 读取 packages 配置文件
     const packagesPath = path.resolve(process.cwd(), 'scripts', 'packages.json')
     // 生成 packages 配置
-    const packages = require(packagesPath).map(item => item.name);
+    const packages = require(packagesPath).map(item => item.name.trim());
 
     // 合并 packages 配置
     ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {packages});
