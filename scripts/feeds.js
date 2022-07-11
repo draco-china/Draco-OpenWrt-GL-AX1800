@@ -1,15 +1,5 @@
 module.exports = [
   {
-    name: 'jerrykuku_argon',
-    uri: 'https://github.com/jerrykuku/luci-theme-argon',
-    branch: 'master',
-  },
-  {
-    name: 'jerrykuku_argon_config',
-    uri: 'https://github.com/jerrykuku/luci-app-argon-config',
-    branch: 'master',
-  },
-  {
     name: 'immortalwrt',
     uri: 'https://github.com/immortalwrt/luci.git',
     branch: 'openwrt-21.02',

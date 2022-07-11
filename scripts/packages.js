@@ -1,6 +1,14 @@
 
 module.exports = [
   {
+    name: 'luci-theme-argon',
+    desc: 'argon主题',
+  },
+  {
+    name: 'luci-app-argon-config',
+    desc: 'argon主题设置',
+  },
+  {
     name: 'luci-app-advancedsetting',
     desc: '系统高级设置',
   },
@@ -15,14 +23,6 @@ module.exports = [
   {
     name: 'luci-app-smartdns',
     desc: 'smartdns DNS防污染',
-  },
-  {
-    name: 'luci-theme-argon',
-    desc: 'argon主题',
-  },
-  {
-    name: 'luci-app-argon-config',
-    desc: 'argon主题设置',
   },
   {
     name: 'luci-app-unblockmusic',
