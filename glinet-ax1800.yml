@@ -13,9 +13,6 @@ feeds:
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
-  - name: helloworld
-    uri: https://github.com/fw876/helloworld.git
-    branch: master
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
@@ -35,9 +32,6 @@ packages:
   - luci-app-advancedsetting
   - luci-app-diskman
   - luci-app-openclash
-  - luci-app-passwall
-  - luci-app-ssr-plus
-  - luci-app-aliddns
   - luci-app-ddns
   - luci-app-eqos
   - luci-app-smartdns
@@ -45,10 +39,8 @@ packages:
   - luci-app-argon-config
   - luci-app-unblockneteasemusic
   - luci-app-ttyd
-  - luci-app-filetransfer
   - luci-app-turboacc
   - luci-app-wol
-  - luci-app-ddnsto
   - luci-app-zerotier
   - luci-app-mwan3
   - luci-app-mwan3helper
@@ -57,11 +49,9 @@ packages:
   - luci-app-xlnetacc
   - luci-app-wrtbwmon
   - luci-app-syncdial
-  - luci-app-transmission
+  - luci-app-serverchan
   - luci-app-aria2
   - luci-app-autoreboot
   - luci-app-dailybonus
-  - luci-app-frpc
-  - luci-app-frps
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0
