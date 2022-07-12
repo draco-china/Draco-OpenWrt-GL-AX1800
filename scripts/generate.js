@@ -26,6 +26,25 @@ const exec = require('child_process').execSync;
 }
 
 /**
+ * 生成 feeds 配置
+ * @param {*} name
+ * @param {*} uri
+ * @param {*} branch
+ * @returns
+ */
+ const GenerateFeedsConfig = (name, uri, branch) => {
+  exec(`git clone --depth=1 ${uri} -b ${branch} ${name}`);
+  const revision = exec(`cd ${name} && git log -1 --pretty=%H`).toString().trim();
+  exec(`cd ..`);
+  exec(`rm -rf ${name}`);
+  return {
+    name: name.trim(),
+    uri: uri.trim(),
+    revision: revision.trim(),
+  };
+}
+
+/**
  * 生成编译配置文件
  */
 const GenerateYml = (devices) => {
@@ -42,12 +61,8 @@ const GenerateYml = (devices) => {
       const index = keys.indexOf(a);
       return index - keys.indexOf(b);
     }
-
     // 生成 feeds 配置
-    const feeds = require('./feeds').map(item => {
-      Object.keys(item).forEach(key => item[key].trim())
-      return item;
-    });
+    const feeds = require('./feeds').map(item => GenerateFeedsConfig(item.name, item.uri, item.branch));
 
     // 生成 packages 配置
     const packages = require('./packages').map(item => item.name.trim());
