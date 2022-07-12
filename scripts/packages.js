@@ -25,7 +25,7 @@ module.exports = [
     desc: 'smartdns DNS防污染',
   },
   {
-    name: 'luci-app-unblockmusic',
+    name: 'luci-app-unblockneteasemusic',
     desc: '解锁网易云音乐',
   },
   {

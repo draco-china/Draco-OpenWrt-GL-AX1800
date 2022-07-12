@@ -14,9 +14,9 @@ module.exports = [
   //   uri: 'https://github.com/kenzok8/openwrt-packages.git',
   //   branch: 'master',
   // },
-  // {
-  //   name: 'small',
-  //   uri: 'https://github.com/kenzok8/small.git',
-  //   branch: 'master',
-  // },
+  {
+    name: 'small',
+    uri: 'https://github.com/kenzok8/small.git',
+    branch: 'master',
+  },
 ];
