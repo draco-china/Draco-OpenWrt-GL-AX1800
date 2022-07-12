@@ -16,6 +16,9 @@ feeds:
   - name: immortalwrt
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
+  - name: small
+    uri: https://github.com/kenzok8/small.git
+    branch: master
 include:
   - wifi-ax
 packages:
@@ -27,7 +30,7 @@ packages:
   - luci-app-diskman
   - luci-app-openclash
   - luci-app-smartdns
-  - luci-app-unblockmusic
+  - luci-app-unblockneteasemusic
   - luci-app-ttyd
   - luci-app-zerotier
   - luci-app-turboacc
