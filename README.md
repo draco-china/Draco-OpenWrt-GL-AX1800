@@ -7,12 +7,6 @@
 
 ![](https://img.shields.io/badge/主要功能:-blueviolet.svg?style=flat-square) ![](https://img.shields.io/badge/-OpenClash-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-AdGuard_Home-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Samba-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-CIFSD-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-FTP-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-SFTP-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-DLNA-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Aria2-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Transmission-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-解锁网易云灰色歌曲-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-UPnP-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-京东签到服务-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-IPv6_加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-BBR_加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-FullCone_NAT_加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-SFE_加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-HWNAT_加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-桥接加速-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-DDNS-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Docker_容器-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Frpc_NPS_内网穿透-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-多线多拨-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-负载均衡-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-SQM_Qos-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-文件助手-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-文件浏览器-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-可道云-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-Rclone-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-SmartDNS-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-网络唤醒-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-TTYD_终端-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-迅雷快鸟-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-USB_打印服务器-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-KMS_服务器-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-微信推送-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-上网时间控制-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-WatchCat-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-各种驱动-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-DNS_Filter-blue.svg?style=flat-square) ![](https://img.shields.io/badge/-持续更新中……-blue.svg?style=flat-square)
 
-> 基于官方编译器 <https://github.com/gl-inet/gl-infra-builder> 构建, 支持官方界面
-
-> 通过  openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar 升级
-
-> 进入uboot，选择openwrt-ipq807x-glinet_ax1800-squashfs-nand-factory.img 文件升级
-
 ## 目录介绍
 
 ```tree
@@ -33,6 +27,10 @@ Draco-OpenWrt-GL-AX1800
 
 ## 其他说明
 
+- *基于官方编译器 <https://github.com/gl-inet/gl-infra-builder> 构建, 支持官方界面*
+- *通过  openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar 升级*
+- *进入uboot，选择openwrt-ipq807x-glinet_ax1800-squashfs-nand-factory.img 文件升级*
+- 部分 `feeds` & `packages` 已经注释移除，可自行 `fork` 编译定制
 - 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml` & `glinet-axt1800.yml`
 - 北京时间每天 `0:00` 定时编译，`Release` 中只保留最新版本
 - 历史版本在 `Actions` 中选择一个已经运行完成且成功的 `workflow` 在页面底部可以看到 `Annotations` 和 `Artifacts`
