@@ -45,7 +45,6 @@ Draco-OpenWrt-GL-AX1800
 - 然后点击自己仓库的Settings选项卡，再点击Secrets。添加名为ACTIONS_TRIGGER_PAT的加密环境变量，保存刚刚创建的 PAT 。
 - ![](./preview/WX20220711-202739%402x.png)
 - 在 Actions 页面选择Update Checker，点击Run workflow手动进行一次测试运行。如果没有报错且 OpenWrt 编译工作流程被触发，则代表测试通过。
-- 最后编辑Update Checker的 workflow 文件（.github/workflows/update-checker.yml），取消注释（删除#）定时触发相关的部分。这里可以根据 cron 格式来设定检测的时间，时区为 UTC 。
 
 ## 界面预览
 
