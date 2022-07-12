@@ -30,9 +30,8 @@ const exec = require('child_process').execSync;
  */
 const GenerateYml = (devices) => {
   try {
-    exec(`npm install js-yaml lodash`);
+    exec(`npm install js-yaml`);
     const yaml = require('js-yaml');
-    const lodash = require('lodash');
 
     const glInfraBuilder = path.resolve(process.cwd(), 'gl-infra-builder')
     exec(`git clone --depth=1 https://github.com/gl-inet/gl-infra-builder -b main ${glInfraBuilder}`);
