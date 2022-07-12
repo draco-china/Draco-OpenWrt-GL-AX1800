@@ -40,6 +40,7 @@ const exec = require('child_process').execSync;
   return {
     name: name.trim(),
     uri: uri.trim(),
+    branch: branch.trim(),
     revision: revision.trim(),
   };
 }
