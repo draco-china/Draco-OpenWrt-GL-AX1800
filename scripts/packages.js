@@ -1,7 +1,9 @@
 
 module.exports = [
   {
+    // app 名称
     name: 'luci-theme-argon',
+    // app 描述
     desc: 'argon主题',
   },
   {

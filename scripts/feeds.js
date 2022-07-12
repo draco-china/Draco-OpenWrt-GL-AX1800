@@ -1,7 +1,10 @@
 module.exports = [
   {
+    // feed 名称
     name: 'immortalwrt',
+    // feed 仓库
     uri: 'https://github.com/immortalwrt/luci.git',
+    // feed 分支
     branch: 'openwrt-21.02',
   },
   // {

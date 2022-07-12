@@ -28,70 +28,70 @@ const exec = require('child_process').execSync;
 /**
  * 生成编译配置文件
  */
-const GenerateYml = () => {
+const GenerateYml = (devices) => {
   try {
-    exec(`npm install js-yaml`);
+    exec(`npm install js-yaml lodash`);
     const yaml = require('js-yaml');
+    const lodash = require('lodash');
 
     const glInfraBuilder = path.resolve(process.cwd(), 'gl-infra-builder')
     exec(`git clone --depth=1 https://github.com/gl-inet/gl-infra-builder -b main ${glInfraBuilder}`);
-    // 读取官方配置文件
-    const ax1800Config = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/target_wlan_ap-gl-ax1800-5-4.yml`, 'utf8'));
-    const axt1800Config = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/target_wlan_ap-gl-axt1800-5-4.yml`, 'utf8'));
 
-    // 读取官方公共配置
-    const ax1800ConfigCommon = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${ax1800Config.include[0]}.yml`, 'utf8'));
-    const axt1800ConfigCommon = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${axt1800Config.include[0]}.yml`, 'utf8'));
+    // 序列化配置文件
+    const keys = ['profile', 'target', 'subtarget', 'description', 'image', 'feeds', 'include', 'packages', 'diffconfig'];
+    const sortKeys = (a, b) => {
+      const index = keys.indexOf(a);
+      return index - keys.indexOf(b);
+    }
 
-    // 移除 include 字段
-    ax1800Config.include = [];
-    axt1800Config.include = [];
-
-    // 合并官方配置
-    let ax1800ConfigMerge = deepmerge(ax1800Config, ax1800ConfigCommon);
-    let axt1800ConfigMerge = deepmerge(axt1800Config, axt1800ConfigCommon);
-    
     // 生成 feeds 配置
     const feeds = require('./feeds').map(item => {
       Object.keys(item).forEach(key => item[key].trim())
       return item;
     });
 
-    // 合并 feeds 配置
-    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {feeds});
-    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {feeds});
-
     // 生成 packages 配置
     const packages = require('./packages').map(item => item.name.trim());
 
-    // 合并 packages 配置
-    ax1800ConfigMerge = deepmerge(ax1800ConfigMerge, {packages});
-    axt1800ConfigMerge = deepmerge(axt1800ConfigMerge, {packages});
+    devices.forEach(device => {
+      // 读取官方配置文件
+      console.log(`${glInfraBuilder}/profiles/${device.profiles}.yml`);
+      let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${device.profiles}.yml`, 'utf8'));
+      // 获取 include 列表
+      const include = profilesYml.include;
+      if(include.length > 0) {
+        profilesYml.include = [];
+        include.forEach(include => {
+          // 读取 include 配置文件
+          const includeYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${include}.yml`, 'utf8'));
+          // 合并 include 配置文件
+          profilesYml = deepmerge(profilesYml, includeYml);
+        });
 
-    // 转换为 YAML
-    const sortKeys = ['profile', 'target', 'subtarget', 'description', 'image', 'feeds', 'include', 'packages', 'diffconfig'];
-    const ax1800ConfigYml = yaml.dump(ax1800ConfigMerge, {
-      lineWidth: -1,
-      sortKeys: (a, b) => {
-        const index = sortKeys.indexOf(a);
-        return index - sortKeys.indexOf(b);
       }
-    });
-    const axt1800ConfigYml = yaml.dump(axt1800ConfigMerge, {
-      lineWidth: -1,
-      sortKeys: (a, b) => {
-        const index = sortKeys.indexOf(a);
-        return index - sortKeys.indexOf(b);
+        // 合并 feeds 配置
+      profilesYml = deepmerge(profilesYml, { feeds });
+      // 合并 packages 配置
+      profilesYml = deepmerge(profilesYml, { packages });
+      // 转换为 YAML 格式
+      const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
+      // 配置文件路径
+      const profilesPath = path.resolve(process.cwd(), `glinet-${device.name}.yml`);
+      // 写入配置文件
+      fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
+
+      // 是否生成 workflow 配置
+      if(device.workflow) {
+        // 读取 workflow 模板
+        let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
+        // 替换模板中的变量
+        template = template.replace(/\$\{device\}/g, device.name);
+        template = template.replace(/\$\{deviceUpper\}/g, device.name.toUpperCase());
+        // 写入workflow
+        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `build-glinet-${device.name}.yml`);
+        fs.writeFileSync(workflowsPath, template)
       }
-    });
-
-    // 生成配置文件路径
-    const ax1800FilePath = path.resolve(process.cwd(), `glinet-ax1800.yml`);
-    const axt1800FilePath = path.resolve(process.cwd(), `glinet-axt1800.yml`);
-
-    // 写入配置文件
-    fs.writeFileSync(ax1800FilePath, `---\n${ax1800ConfigYml}`);
-    fs.writeFileSync(axt1800FilePath, `---\n${axt1800ConfigYml}`);
+    })
   } catch (error) {
     console.log(error);
   } finally {
@@ -103,4 +103,6 @@ const GenerateYml = () => {
   }
 }
 
-GenerateYml();
+const devices = require('./devices');
+
+GenerateYml(devices);
