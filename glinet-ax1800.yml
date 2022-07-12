@@ -45,7 +45,7 @@ packages:
   - luci-app-argon-config
   - luci-app-unblockneteasemusic
   - luci-app-ttyd
-  - luci-app-filetransfer
+  - luci-app-samba4
   - luci-app-turboacc
   - luci-app-wol
   - luci-app-ddnsto

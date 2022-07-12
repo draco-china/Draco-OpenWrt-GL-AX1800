@@ -52,8 +52,8 @@
     "desc": "ttyd 终端"
   },
   {
-    "name": "luci-app-filetransfer",
-    "desc": "文件传输"
+    "name": "luci-app-samba4",
+    "desc": "Samba4 文件共享"
   },
   {
     "name": "luci-app-turboacc",
