@@ -44,7 +44,7 @@ Draco-OpenWrt-GL-AX1800
 
 - 创建 [Personal access token(PAT)](https://github.com/settings/tokens/new) ，勾选repo权限，这将用于自动触发编译工作流程。
 - ![](./preview/WX20220711-202547%402x.png)
-- 然后点击自己仓库的Settings选项卡，再点击Secrets。添加名为ACTIONS_TRIGGER_PAT的加密环境变量，保存刚刚创建的 PAT 。
+- 然后点击自己仓库的Settings选项卡，再点击Secrets。添加名为 DEPLOY_KEY 的加密环境变量，保存刚刚创建的 PAT 。
 - ![](./preview/WX20220711-202739%402x.png)
 - 在 Actions 页面选择 Generate glinet-ax1800.yml & glinet-axt1800.yml ，点击Run workflow手动进行一次测试运行。如果没有报错且 OpenWrt 编译工作流程被触发，则代表测试通过。
 
