@@ -48,7 +48,7 @@ const exec = require('child_process').execSync;
 /**
  * 生成编译配置文件
  */
-const GenerateYml = (devices) => {
+const GenerateYml = (workflows) => {
   try {
     exec(`npm install js-yaml`);
     const yaml = require('js-yaml');
@@ -68,10 +68,10 @@ const GenerateYml = (devices) => {
     // 生成 packages 配置
     const packages = require('./packages').map(item => item.name.trim());
 
-    devices.forEach(device => {
+    const workflowsJSON = workflows.map(workflow => {
       // 读取官方配置文件
-      console.log(`${glInfraBuilder}/profiles/${device.profiles}.yml`);
-      let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${device.profiles}.yml`, 'utf8'));
+      console.log(`${glInfraBuilder}/profiles/${workflow.target}.yml`);
+      let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${workflow.target}.yml`, 'utf8'));
       // 获取 include 列表
       const include = profilesYml.include;
       if(include.length > 0) {
@@ -91,22 +91,42 @@ const GenerateYml = (devices) => {
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
-      const profilesPath = path.resolve(process.cwd(), `glinet-${device.name}.yml`);
+      const profilesPath = path.resolve(process.cwd(), `glinet-${workflow.model}.yml`);
       // 写入配置文件
       fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
 
       // 是否生成 workflow 配置
-      if(device.workflow) {
+      if(workflow.workflow) {
         // 读取 workflow 模板
         let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
         // 替换模板中的变量
-        template = template.replace(/\$\{device\}/g, device.name);
-        template = template.replace(/\$\{deviceUpper\}/g, device.name.toUpperCase());
+        template = template.replace(/\$\{model\}/g, workflow.model);
+        template = template.replace(/\$\{config\}/g, workflow.config);
+        template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
         // 写入workflow
-        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `build-glinet-${device.name}.yml`);
+        const fileName = workflow.name || `build-glinet-${workflow.name}`
+        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${fileName}.yml`);
         fs.writeFileSync(workflowsPath, template)
+        workflow.workflow = false
       }
+      return workflow
     })
+    // 如果有更新则更新配置文件
+    if(workflows.find(item => item.workflow)) {
+    // 保留原有的配置文件
+    exec(`cp -r ${path.resolve(__dirname, 'workflows.js')} ${path.resolve(__dirname, 'workflows.old.js')}`);
+    // 更新workflows配置
+    fs.writeFileSync(path.resolve(__dirname, 'workflows.js'),
+    `/**
+* 字段说明
+* @name 工作流文件名 可留空（留空自动生成为 build-glnet-型号）
+* @model 设备型号
+* @config 官方 wlan-ap配置文件名称 profiles 目录下
+* @target 官方 target_wlan_ap 配置文件名称 profiles 目录下
+* @workflow 是否生成 workflow 配置
+*/
+module.exports = ${JSON.stringify(workflowsJSON, null, 2)}`);
+}
   } catch (error) {
     console.log(error);
   } finally {
@@ -118,6 +138,6 @@ const GenerateYml = (devices) => {
   }
 }
 
-const devices = require('./devices');
+const workflows = require('./workflows');
 
-GenerateYml(devices);
+GenerateYml(workflows);

@@ -18,11 +18,12 @@ Draco-OpenWrt-GL-AX1800
 │   ├── generate-glinet.yml       云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml`
 ├── scripts
 │   ├── build.sh                  本地编译脚本，必须在项目根目录下执行 `./scripts/build.sh`
-│   ├── devices.js                生成设备所需的设备配置, 支持官方所有支持的型号
 │   ├── feeds.js                  feeds 第三方仓库地址配置
 │   ├── generate.js               云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml` 脚本
-│   └── packages.js               packages 第三方软件包配置
-│   └── workflow.tpl              actions 模板文件
+│   ├── packages.js               packages 第三方软件包配置
+│   ├── workflow.tpl              actions 模板文件
+│   ├── workflows.js              生成设备所需的设备的工作流（actions）, 支持官方所有支持的型号
+│   └── workflows.old.tpl         生成所需的设备的工作流（actions）后所保留的 workflows.js 其中 workflow 会更新为 false, 防止二次生成
 ├── glinet-ax1800.yml             AX1800 编译描述文件
 ├── glinet-axt1800.yml            AXT1800 编译描述文件
 └── README.md
