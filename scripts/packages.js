@@ -50,10 +50,10 @@ module.exports = [
     name: 'luci-app-autoreboot',
     desc: '支持计划重启',
   },
-  {
-    name: 'luci-app-samba4',
-    desc: 'samba4文件共享',
-  },
+  // {
+  //   name: 'luci-app-samba4',
+  //   desc: 'samba4文件共享',
+  // },
   // {
   //   name: 'luci-app-sqm',
   //   desc: '流量智能队列管理(QOS)',
