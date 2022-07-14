@@ -70,7 +70,6 @@ const GenerateYml = (workflows) => {
 
     const workflowsJSON = workflows.map(workflow => {
       // 读取官方配置文件
-      console.log(`${glInfraBuilder}/profiles/${workflow.target}.yml`);
       let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${workflow.target}.yml`, 'utf8'));
       // 获取 include 列表
       const include = profilesYml.include;
@@ -91,7 +90,8 @@ const GenerateYml = (workflows) => {
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
-      const profilesPath = path.resolve(process.cwd(), `glinet-${workflow.model}.yml`);
+      const build = workflow.build || `glinet-${workflow.model}`
+      const profilesPath = path.resolve(process.cwd(), `${build}.yml`);
       // 写入配置文件
       fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
 
@@ -103,16 +103,19 @@ const GenerateYml = (workflows) => {
         template = template.replace(/\$\{model\}/g, workflow.model);
         template = template.replace(/\$\{config\}/g, workflow.config);
         template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
+        template = template.replace(/\$\{build\}/g, build);
         // 写入workflow
         const fileName = workflow.name || `build-glinet-${workflow.name}`
         const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${fileName}.yml`);
         fs.writeFileSync(workflowsPath, template)
-        workflow.workflow = false
       }
-      return workflow
+      return {
+        ...workflow,
+        workflow: false
+      }
     })
     // 如果有更新则更新配置文件
-    if(workflows.find(item => item.workflow)) {
+    if(workflows.filter(item => item.workflow).length > 0) {
     // 保留原有的配置文件
     exec(`cp -r ${path.resolve(__dirname, 'workflows.js')} ${path.resolve(__dirname, 'workflows.old.js')}`);
     // 更新workflows配置

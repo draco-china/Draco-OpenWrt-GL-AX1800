@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build ${modelUpper} OpenWrt
+name: Build AX1800 OpenWrt
 
 on:
   repository_dispatch:
@@ -19,8 +19,8 @@ on:
         required: false
         default: 'false'
 
-  schedule:
-    - cron: 0 16 * * *
+  # schedule:
+  #   - cron: 0 16 * * *
 
 env:
   REPO_URL: https://github.com/gl-inet/gl-infra-builder
@@ -67,13 +67,13 @@ jobs:
         cd /workdir/gl-infra-builder
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@github.com"
-        python3 setup.py -c ${config}.yml
+        python3 setup.py -c config-wlan-ap.yml
 
     - name: Download package
       id: package
       run: |
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
-        ./scripts/gen_config.py ${build} glinet_depends
+        ./scripts/gen_config.py glnet-ax1800-4.x glinet_depends
         git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -147,9 +147,9 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled() && !failure()
       run: |
-        echo "::set-output name=release_tag::${modelUpper}-$(date +"%Y.%m.%d-%H.%M")"
+        echo "::set-output name=release_tag::AX1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "${modelUpper} 固件" >> release.txt
+        echo "AX1800 固件" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"

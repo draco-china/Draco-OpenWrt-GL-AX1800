@@ -1,5 +1,5 @@
 
-name: Generate glinet-ax1800.yml & glinet-axt1800.yml
+name: Generate workflows and build config
 
 on:
   repository_dispatch:
