@@ -30,9 +30,9 @@
     workflow: false,
   },
   {
-    name: 'build-glnet-ax1800-4.x',
+    name: 'build-glnet-axt1800-4.x',
     model: 'axt1800',
-    config: 'config-wlan-ap-5.4',
+    config: 'config-wlan-ap',
     target: 'target_wlan_ap-gl-axt1800',
     build: 'glnet-axt1800-4.x',
     workflow: false,

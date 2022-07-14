@@ -19,8 +19,8 @@ on:
         required: false
         default: 'false'
 
-  # schedule:
-  #   - cron: 0 16 * * *
+  schedule:
+    - cron: 0 16 * * *
 
 env:
   REPO_URL: https://github.com/gl-inet/gl-infra-builder
@@ -67,7 +67,7 @@ jobs:
         cd /workdir/gl-infra-builder
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@github.com"
-        python3 setup.py -c config-wlan-ap-5.4.yml
+        python3 setup.py -c config-wlan-ap.yml
 
     - name: Download package
       id: package
