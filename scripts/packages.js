@@ -38,7 +38,6 @@ module.exports = [
     name: 'luci-app-ramfree',
     desc: '释放内存',
   },
-
   {
     name: 'luci-app-xlnetacc',
     desc: '迅雷快鸟',
