@@ -30,7 +30,6 @@ packages:
   - kmod-wireguard-backport
   - luci-theme-argon
   - luci-app-argon-config
-  - luci-app-advancedsetting
   - luci-app-diskman
   - luci-app-openclash
   - luci-app-smartdns
@@ -38,7 +37,6 @@ packages:
   - luci-app-turboacc
   - luci-app-wol
   - luci-app-ramfree
-  - luci-app-sqm
   - luci-app-xlnetacc
   - luci-app-aria2
   - luci-app-autoreboot

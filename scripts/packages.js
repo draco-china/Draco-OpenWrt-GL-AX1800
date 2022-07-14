@@ -11,10 +11,6 @@ module.exports = [
     desc: 'argon主题设置',
   },
   {
-    name: 'luci-app-advancedsetting',
-    desc: '系统高级设置',
-  },
-  {
     name: 'luci-app-diskman',
     desc: '磁盘管理工具',
   },
@@ -42,10 +38,7 @@ module.exports = [
     name: 'luci-app-ramfree',
     desc: '释放内存',
   },
-  {
-    name: 'luci-app-sqm',
-    desc: '流量智能队列管理(QOS)',
-  },
+
   {
     name: 'luci-app-xlnetacc',
     desc: '迅雷快鸟',
@@ -62,6 +55,14 @@ module.exports = [
     name: 'luci-app-samba4',
     desc: 'samba4文件共享',
   },
+  // {
+  //   name: 'luci-app-sqm',
+  //   desc: '流量智能队列管理(QOS)',
+  // },
+  // {
+  //   name: 'luci-app-advancedsetting',
+  //   desc: '系统高级设置',
+  // },
   // {
   //   name: 'luci-app-ttyd',
   //   desc: 'ttyd 终端',
