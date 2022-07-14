@@ -27,14 +27,6 @@ module.exports = [
     desc: 'smartdns DNS防污染',
   },
   {
-    name: 'luci-app-unblockneteasemusic',
-    desc: '解锁网易云音乐',
-  },
-  {
-    name: 'luci-app-ttyd',
-    desc: 'ttyd 终端',
-  },
-  {
     name: 'luci-app-zerotier',
     desc: 'ZeroTier内网穿透',
   },
@@ -59,10 +51,6 @@ module.exports = [
     desc: '迅雷快鸟',
   },
   {
-    name: 'luci-app-syncdial',
-    desc: '多拨虚拟网卡',
-  },
-  {
     name: 'luci-app-aria2',
     desc: 'aria2下载工具',
   },
@@ -74,6 +62,18 @@ module.exports = [
     name: 'luci-app-samba4',
     desc: 'samba4文件共享',
   },
+  // {
+  //   name: 'luci-app-ttyd',
+  //   desc: 'ttyd 终端',
+  // },
+  // {
+  //   name: 'luci-app-unblockneteasemusic',
+  //   desc: '解锁网易云音乐 (无界面)',
+  // },
+  // {
+  //   name: 'luci-app-syncdial',
+  //   desc: '多拨虚拟网卡（需要光猫支持多拨）',
+  // },
   // {
   //   name: 'luci-app-passwall',
   //   desc: 'passwall代理软件',
