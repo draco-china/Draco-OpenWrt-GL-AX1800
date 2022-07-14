@@ -38,6 +38,5 @@ packages:
   - luci-app-xlnetacc
   - luci-app-aria2
   - luci-app-autoreboot
-  - luci-app-samba4
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0

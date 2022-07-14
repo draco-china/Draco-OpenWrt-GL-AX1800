@@ -40,4 +40,3 @@ packages:
   - luci-app-xlnetacc
   - luci-app-aria2
   - luci-app-autoreboot
-  - luci-app-samba4
