@@ -90,16 +90,6 @@ const GenerateYml = (workflows) => {
       // 合并 packages 配置
       profilesYml = deepmerge(profilesYml, { packages });
 
-      // 修复 4.x 版本的配置文件
-      if(profilesYml.feeds.find(feed => feed.name === 'wifi_ax')) {
-        profilesYml.feeds = profilesYml.feeds.filter(feed => feed.name !== 'wifi_ax');
-        profilesYml = deepmerge(profilesYml, {
-          include: [
-            'wifi-ax',
-          ]
-        });
-      }
-
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
