@@ -19,7 +19,7 @@ Draco-OpenWrt-GL-AX1800
 ├── scripts
 │   ├── build.sh                  本地编译脚本，必须在项目根目录下执行 `./scripts/build.sh`
 │   ├── feeds.js                  feeds 第三方仓库地址配置
-│   ├── generate.js               云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml` 脚本
+│   ├── generate.js               云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml` 脚本(每天11点定时执行，代码提交也会自动执行)
 │   ├── packages.js               packages 第三方软件包配置
 │   ├── workflow.tpl              actions 模板文件
 │   ├── workflows.js              生成设备所需的设备的工作流（actions）, 支持官方所有支持的型号
