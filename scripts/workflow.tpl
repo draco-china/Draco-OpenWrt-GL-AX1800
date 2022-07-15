@@ -152,7 +152,7 @@ jobs:
         echo "${releaseTitle}" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "- 🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "${releasePackages}" >> release.txt
+        echo -e ${releasePackages} >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release

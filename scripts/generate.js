@@ -108,10 +108,10 @@ const GenerateYml = (workflows) => {
       template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
       template = template.replace(/\$\{build\}/g, build.replace(/\./g, '-'));
       template = template.replace(/\$\{releaseTitle\}/g, `## 📦‍ 固件下载 | ${build.toUpperCase().replace(/-/g, ' ')}`);
-      template = template.replace(/\$\{releasePackages\}/g, [
+      template = template.replace(/\$\{releasePackages\}/g, JSON.stringify([
         `## ✨ 主要功能`,
         ...packagesDesc
-      ].join('\n'));
+      ].join('\n')));
       // 写入workflow
       const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
       fs.writeFileSync(workflowsPath, template)
