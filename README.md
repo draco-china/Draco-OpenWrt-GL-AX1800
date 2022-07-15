@@ -15,7 +15,7 @@ Draco-OpenWrt-GL-AX1800
 ├── .github/workflows
 │   ├── build-glnet-ax1800.yml    云编译 AX1800
 │   ├── build-glnet-axt1800.yml   云编译 AXT1800
-│   ├── generate-glinet.yml       云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml`
+│   ├── generate-config.yml       云生成 `glinet-ax1800.yml` & `glinet-ax1800.yml`
 ├── scripts
 │   ├── build.sh                  本地编译脚本，必须在项目根目录下执行 `./scripts/build.sh`
 │   ├── feeds.js                  feeds 第三方仓库地址配置
@@ -35,7 +35,7 @@ Draco-OpenWrt-GL-AX1800
 - *通过  `openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar` 升级*
 - *进入`uboot`，选择 `openwrt-ipq807x-glinet_ax1800-squashfs-nand-factory.img` 文件升级*
 - 部分 `feeds` & `packages` 已经注释移除，可自行 `fork` 编译定制
-- 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml` & `glinet-axt1800.yml`
+- 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml` & `glinet-axt1800.yml` 等配置文件生成的 `yml`
 - 北京时间每天 `0:00` 定时编译，`Release` 中只保留最新版本
 - 历史版本在 `Actions` 中选择一个已经运行完成且成功的 `workflow` 在页面底部可以看到 `Annotations` 和 `Artifacts`
 - `Annotations` 中的网盘失效时间一般是 1-3 天, `Artifacts` 需要登录 Github 才能下载
@@ -47,7 +47,7 @@ Draco-OpenWrt-GL-AX1800
 - ![](./preview/WX20220711-202547%402x.png)
 - 然后点击自己仓库的Settings选项卡，再点击Secrets。添加名为 DEPLOY_KEY 的加密环境变量，保存刚刚创建的 PAT 。
 - ![](./preview/WX20220711-202739%402x.png)
-- 在 Actions 页面选择 Generate glinet-ax1800.yml & glinet-axt1800.yml ，点击Run workflow手动进行一次测试运行。如果没有报错且 OpenWrt 编译工作流程被触发，则代表测试通过。
+- 在 Actions 页面选择 GENERATE CONFIG ，点击Run workflow手动进行一次测试运行。如果没有报错且 OpenWrt 编译工作流程被触发，则代表测试通过。
 
 ## 界面预览
 
