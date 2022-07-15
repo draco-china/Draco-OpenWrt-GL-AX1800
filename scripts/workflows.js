@@ -25,7 +25,7 @@
     model: 'ax1800',
     config: 'config-wlan-ap',
     target: 'target_wlan_ap-gl-ax1800',
-    build: 'glnet-ax1800-4.x',
+    build: 'glinet-ax1800-4.x',
     workflow: false,
   },
   {
@@ -33,7 +33,7 @@
     model: 'axt1800',
     config: 'config-wlan-ap',
     target: 'target_wlan_ap-gl-axt1800',
-    build: 'glnet-axt1800-4.x',
+    build: 'glinet-axt1800-4.x',
     workflow: false,
   }
 ];
