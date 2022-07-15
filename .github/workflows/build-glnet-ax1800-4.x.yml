@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build AX1800 OpenWrt
+name: Build AX1800 4.X OpenWrt
 
 on:
   repository_dispatch:
