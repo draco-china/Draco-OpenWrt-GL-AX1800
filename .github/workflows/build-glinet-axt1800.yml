@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build AX1800 OpenWrt
+name: BUILD GLINET AXT1800
 
 on:
   repository_dispatch:
@@ -73,7 +73,7 @@ jobs:
       id: package
       run: |
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
-        ./scripts/gen_config.py glinet-ax1800 glinet_depends
+        ./scripts/gen_config.py glinet-axt1800 glinet_depends
         git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -147,9 +147,9 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled() && !failure()
       run: |
-        echo "::set-output name=release_tag::AX1800-$(date +"%Y.%m.%d-%H.%M")"
+        echo "::set-output name=release_tag::AXT1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "AX1800 固件" >> release.txt
+        echo "AXT1800 固件" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
