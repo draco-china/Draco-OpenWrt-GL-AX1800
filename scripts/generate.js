@@ -97,17 +97,17 @@ const GenerateYml = (workflows) => {
 
       // 是否生成 workflow 配置
       if(workflow.workflow) {
-        const fileName =(workflow.name || `build-glinet-${workflow.model}`).replace(/\./g, '-');
+        const workflowName = workflow.name || `build-glinet-${workflow.model}`;
         // 读取 workflow 模板
         let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
         // 替换模板中的变量
-        template = template.replace(/\$\{name\}/g, fileName.toUpperCase().replace(/-/g, ' '));
+        template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
         template = template.replace(/\$\{model\}/g, workflow.model);
         template = template.replace(/\$\{config\}/g, workflow.config);
         template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
         template = template.replace(/\$\{build\}/g, build);
         // 写入workflow
-        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${fileName}.yml`);
+        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
         fs.writeFileSync(workflowsPath, template)
       }
       return {
