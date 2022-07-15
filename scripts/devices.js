@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     name: 'axt1800',
-    profiles: 'target_wlan_ap-gl-axt1800-5-4',
-    workflow: false,
+    profiles: 'target_wlan_ap-gl-axt1800',
+    workflow: true,
   }
 ];
