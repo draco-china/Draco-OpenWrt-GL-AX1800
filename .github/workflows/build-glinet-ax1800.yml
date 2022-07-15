@@ -21,7 +21,7 @@ on:
 
   push:
     paths:
-      - 'scripts/*'
+      - 'glinet-ax1800.yml'
     branches:
       - master
 

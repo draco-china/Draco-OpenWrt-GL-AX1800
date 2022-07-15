@@ -85,10 +85,21 @@ const GenerateYml = (workflows) => {
         });
 
       }
-        // 合并 feeds 配置
+      // 合并 feeds 配置
       profilesYml = deepmerge(profilesYml, { feeds });
       // 合并 packages 配置
       profilesYml = deepmerge(profilesYml, { packages });
+
+      // 修复 4.x 版本的配置文件
+      if(profilesYml.feeds.find(feed => feed.name === 'wifi_ax')) {
+        profilesYml.feeds = profilesYml.feeds.filter(feed => feed.name !== 'wifi_ax');
+        profilesYml = deepmerge(profilesYml, {
+          include: [
+            'wifi_ax',
+          ]
+        });
+      }
+
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
@@ -103,6 +114,7 @@ const GenerateYml = (workflows) => {
       let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
       // 替换模板中的变量
       template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
+      template = template.replace(/\$\{pathFile\}/g, `${build.replace(/\./g, '-')}.yml`);
       template = template.replace(/\$\{model\}/g, workflow.model);
       template = template.replace(/\$\{config\}/g, workflow.config);
       template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());

@@ -21,7 +21,7 @@ on:
 
   push:
     paths:
-      - '*.yml'
+      - '${pathFile}'
     branches:
       - master
 

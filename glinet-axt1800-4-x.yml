@@ -7,8 +7,6 @@ image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysup
 feeds:
   - name: ipq807x
     path: ../../feeds/ipq807x
-  - name: wifi_ax
-    path: ../../feeds/wifi-ax
   - name: gl_feeds_common
     uri: https://github.com/gl-inet/gl-feeds.git
     revision: 44d41a5980edda78ba8d290b882b255bc678d1b4
@@ -23,7 +21,8 @@ feeds:
     uri: https://github.com/kenzok8/small.git
     branch: master
     revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
-include: []
+include:
+  - wifi_ax
 packages:
   - kmod-hwmon-pwmfan
   - wireless-regdb
