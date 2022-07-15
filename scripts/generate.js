@@ -114,6 +114,7 @@ const GenerateYml = (workflows) => {
         `## ✨ 主要功能`,
         ...packagesDesc
       ].join('\n')));
+      template = template.replace(/\$\{length\}/g, workflows.length);
       // 写入workflow
       const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
       fs.writeFileSync(workflowsPath, template)
