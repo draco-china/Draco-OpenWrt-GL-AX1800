@@ -22,7 +22,7 @@ feeds:
     branch: master
     revision: 57ea69958b1d98029a6a3898a64a7c34a5a5e5cb
 include:
-  - wifi_ax
+  - wifi-ax
 packages:
   - kmod-hwmon-pwmfan
   - wireless-regdb
