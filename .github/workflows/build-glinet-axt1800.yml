@@ -21,7 +21,7 @@ on:
 
   push:
     paths:
-      - 'scripts/*'
+      - '*.yml'
     branches:
       - master
 
