@@ -19,8 +19,8 @@ on:
         required: false
         default: 'false'
 
-  # schedule:
-  #   - cron: 0 16 * * *
+  schedule:
+    - cron: 0 16 * * *
 
 env:
   REPO_URL: https://github.com/gl-inet/gl-infra-builder
@@ -149,7 +149,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::AX1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "AX1800 固件" >> release.txt
+        echo "AX1800 4.x 内核 固件" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
@@ -174,7 +174,7 @@ jobs:
       uses: dev-drprasad/delete-older-releases@v0.2.0
       if: env.UPLOAD_RELEASE == 'true' && !cancelled() && !failure()
       with:
-        keep_latest: 6
+        keep_latest: 4
         delete_tags: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
