@@ -19,6 +19,12 @@ on:
         required: false
         default: 'false'
 
+  push:
+    paths:
+      - 'scripts/*'
+    branches:
+      - master
+
   schedule:
     - cron: 0 16 * * *
 
