@@ -6,8 +6,11 @@ on:
   workflow_dispatch:
 
   push:
+    paths:
+      - 'scripts/*'
     branches:
       - master
+
 
   schedule:
     - cron: 0 15 * * *
