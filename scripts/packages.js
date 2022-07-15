@@ -50,7 +50,7 @@ module.exports = [
     desc: '迅雷快鸟',
   },
   {
-    name: 'uci-app-cpufreq',
+    name: 'luci-app-cpufreq',
     desc: 'CPU 性能优化调节',
   },
   {
