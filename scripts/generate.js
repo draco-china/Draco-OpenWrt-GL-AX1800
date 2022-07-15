@@ -90,22 +90,23 @@ const GenerateYml = (workflows) => {
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
-      const build = workflow.build || `glinet-${workflow.model}`
+      const build = (workflow.build || `glinet-${workflow.model}`).replace(/\./g, '-');
       const profilesPath = path.resolve(process.cwd(), `${build}.yml`);
       // 写入配置文件
       fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
 
       // 是否生成 workflow 配置
       if(workflow.workflow) {
+        const fileName =(workflow.name || `build-glinet-${workflow.model}`).replace(/\./g, '-');
         // 读取 workflow 模板
         let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
         // 替换模板中的变量
+        template = template.replace(/\$\{name\}/g, fileName.toUpperCase().replace(/-/g, ' '));
         template = template.replace(/\$\{model\}/g, workflow.model);
         template = template.replace(/\$\{config\}/g, workflow.config);
         template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
         template = template.replace(/\$\{build\}/g, build);
         // 写入workflow
-        const fileName = workflow.name || `build-glinet-${workflow.name}`
         const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${fileName}.yml`);
         fs.writeFileSync(workflowsPath, template)
       }
