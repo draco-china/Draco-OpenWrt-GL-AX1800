@@ -53,10 +53,6 @@ module.exports = [
     name: 'luci-app-cpufreq',
     desc: 'CPU 性能优化调节',
   },
-  {
-    name: 'luci-app-cpulimit',
-    desc: 'CPU 占用率限制',
-  }
   // {
   //   name: 'luci-app-samba4',
   //   desc: 'samba4文件共享',
