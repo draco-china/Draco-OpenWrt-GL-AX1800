@@ -39,5 +39,5 @@ packages:
   - luci-app-zerotier
   - luci-app-turboacc
   - luci-app-xlnetacc
-  - uci-app-cpufreq
+  - luci-app-cpufreq
   - luci-app-cpulimit
