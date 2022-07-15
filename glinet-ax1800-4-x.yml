@@ -40,4 +40,3 @@ packages:
   - luci-app-turboacc
   - luci-app-xlnetacc
   - luci-app-cpufreq
-  - luci-app-cpulimit
