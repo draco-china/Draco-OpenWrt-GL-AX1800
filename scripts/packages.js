@@ -1,9 +1,12 @@
 
+/**
+ * 字段说明
+ * @name app 名称
+ * @desc app 描述
+ */
 module.exports = [
   {
-    // app 名称
     name: 'luci-theme-argon',
-    // app 描述
     desc: 'argon主题',
   },
   {
@@ -11,16 +14,28 @@ module.exports = [
     desc: 'argon主题设置',
   },
   {
+    name: 'luci-app-ramfree',
+    desc: '释放内存',
+  },
+  {
+    name: 'luci-app-wol',
+    desc: 'wol 网络唤醒',
+  },
+  {
     name: 'luci-app-diskman',
     desc: '磁盘管理工具',
+  },
+  {
+    name: 'luci-app-smartdns',
+    desc: 'smartdns DNS防污染',
   },
   {
     name: 'luci-app-openclash',
     desc: 'clash的图形代理软件',
   },
   {
-    name: 'luci-app-smartdns',
-    desc: 'smartdns DNS防污染',
+    name: 'luci-app-aria2',
+    desc: 'aria2下载工具',
   },
   {
     name: 'luci-app-zerotier',
@@ -31,25 +46,17 @@ module.exports = [
     desc: 'Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)',
   },
   {
-    name: 'luci-app-wol',
-    desc: 'wol 网络唤醒',
-  },
-  {
-    name: 'luci-app-ramfree',
-    desc: '释放内存',
-  },
-  {
     name: 'luci-app-xlnetacc',
     desc: '迅雷快鸟',
   },
   {
-    name: 'luci-app-aria2',
-    desc: 'aria2下载工具',
+    name: 'uci-app-cpufreq',
+    desc: 'CPU 性能优化调节',
   },
   {
-    name: 'luci-app-autoreboot',
-    desc: '支持计划重启',
-  },
+    name: 'luci-app-cpulimit',
+    desc: 'CPU占用率限制',
+  }
   // {
   //   name: 'luci-app-samba4',
   //   desc: 'samba4文件共享',

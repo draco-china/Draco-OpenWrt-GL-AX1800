@@ -1,10 +1,14 @@
+/**
+ * 字段说明
+ * @name feed 名称
+ * @uri feed 仓库
+ * @branch feed 分支
+ */
+
 module.exports = [
   {
-    // feed 名称
     name: 'immortalwrt',
-    // feed 仓库
     uri: 'https://github.com/immortalwrt/luci.git',
-    // feed 分支
     branch: 'openwrt-21.02',
   },
   // {
