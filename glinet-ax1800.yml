@@ -27,15 +27,16 @@ packages:
   - wget-ssl
   - luci-theme-argon
   - luci-app-argon-config
+  - luci-app-ramfree
+  - luci-app-wol
   - luci-app-diskman
-  - luci-app-openclash
   - luci-app-smartdns
+  - luci-app-openclash
+  - luci-app-aria2
   - luci-app-zerotier
   - luci-app-turboacc
-  - luci-app-wol
-  - luci-app-ramfree
   - luci-app-xlnetacc
-  - luci-app-aria2
-  - luci-app-autoreboot
+  - uci-app-cpufreq
+  - luci-app-cpulimit
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0
