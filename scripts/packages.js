@@ -55,7 +55,7 @@ module.exports = [
   },
   {
     name: 'luci-app-cpulimit',
-    desc: 'CPU占用率限制',
+    desc: 'CPU 占用率限制',
   }
   // {
   //   name: 'luci-app-samba4',

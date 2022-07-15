@@ -149,9 +149,10 @@ jobs:
       run: |
         echo "::set-output name=release_tag::${modelUpper}-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "${modelUpper} 固件" >> release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "${releaseTitle}" >> release.txt
+        [ $UPLOAD_COWTRANSFER = true ] && echo "- 🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "${releasePackages}" >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release

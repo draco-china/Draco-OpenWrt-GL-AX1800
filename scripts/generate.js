@@ -66,9 +66,11 @@ const GenerateYml = (workflows) => {
     const feeds = require('./feeds').map(item => GenerateFeedsConfig(item.name, item.uri, item.branch));
 
     // 生成 packages 配置
-    const packages = require('./packages').map(item => item.name.trim());
+    const package = require('./packages');
+    const packages = package.map(item => item.name.trim());
+    const packagesDesc = package.map((item, index) => `${index + 1}. ${item.desc.trim()}`);
 
-    const workflowsJSON = workflows.map(workflow => {
+    workflows.forEach(workflow => {
       // 读取官方配置文件
       let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${workflow.target}.yml`, 'utf8'));
       // 获取 include 列表
@@ -90,47 +92,30 @@ const GenerateYml = (workflows) => {
       // 转换为 YAML 格式
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
-      const build = (workflow.build || `glinet-${workflow.model}`).replace(/\./g, '-');
-      const profilesPath = path.resolve(process.cwd(), `${build}.yml`);
+      const build = (workflow.build || `glinet-${workflow.model}`);
+      const profilesPath = path.resolve(process.cwd(), `${build.replace(/\./g, '-')}.yml`);
       // 写入配置文件
       fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
 
-      // 是否生成 workflow 配置
-      if(workflow.workflow) {
-        const workflowName = workflow.name || `build-glinet-${workflow.model}`;
-        // 读取 workflow 模板
-        let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
-        // 替换模板中的变量
-        template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
-        template = template.replace(/\$\{model\}/g, workflow.model);
-        template = template.replace(/\$\{config\}/g, workflow.config);
-        template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
-        template = template.replace(/\$\{build\}/g, build);
-        // 写入workflow
-        const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
-        fs.writeFileSync(workflowsPath, template)
-      }
-      return {
-        ...workflow,
-        workflow: false
-      }
+      // 生成 workflow 配置
+      const workflowName = workflow.name || `build-glinet-${workflow.model}`;
+      // 读取 workflow 模板
+      let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
+      // 替换模板中的变量
+      template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
+      template = template.replace(/\$\{model\}/g, workflow.model);
+      template = template.replace(/\$\{config\}/g, workflow.config);
+      template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
+      template = template.replace(/\$\{build\}/g, build.replace(/\./g, '-'));
+      template = template.replace(/\$\{releaseTitle\}/g, `## 📦‍ 固件下载 | ${build.toUpperCase().replace(/-/g, ' ')}`);
+      template = template.replace(/\$\{releasePackages\}/g, [
+        `## ✨ 主要功能`,
+        ...packagesDesc
+      ].join('\n'));
+      // 写入workflow
+      const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
+      fs.writeFileSync(workflowsPath, template)
     })
-    // 如果有更新则更新配置文件
-    if(workflows.filter(item => item.workflow).length > 0) {
-    // 保留原有的配置文件
-    exec(`cp -r ${path.resolve(__dirname, 'workflows.js')} ${path.resolve(__dirname, 'workflows.old.js')}`);
-    // 更新workflows配置
-    fs.writeFileSync(path.resolve(__dirname, 'workflows.js'),
-    `/**
-* 字段说明
-* @name 工作流文件名 可留空（留空自动生成为 build-glnet-型号）
-* @model 设备型号
-* @config 官方 wlan-ap配置文件名称 profiles 目录下
-* @target 官方 target_wlan_ap 配置文件名称 profiles 目录下
-* @workflow 是否生成 workflow 配置
-*/
-module.exports = ${JSON.stringify(workflowsJSON, null, 2)}`);
-}
   } catch (error) {
     console.log(error);
   } finally {

@@ -23,7 +23,6 @@ Draco-OpenWrt-GL-AX1800
 │   ├── packages.js               packages 第三方软件包配置
 │   ├── workflow.tpl              actions 模板文件
 │   ├── workflows.js              生成设备所需的设备的工作流（actions）, 支持官方所有支持的型号
-│   └── workflows.old.tpl         生成所需的设备的工作流（actions）后所保留的 workflows.js 其中 workflow 会更新为 false, 防止二次生成
 ├── glinet-ax1800.yml             AX1800 编译描述文件
 ├── glinet-axt1800.yml            AXT1800 编译描述文件
 └── README.md

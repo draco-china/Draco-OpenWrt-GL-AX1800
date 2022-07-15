@@ -149,9 +149,23 @@ jobs:
       run: |
         echo "::set-output name=release_tag::AXT1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "AXT1800 固件" >> release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "## 📦‍ 固件下载 | GLINET AXT1800" >> release.txt
+        [ $UPLOAD_COWTRANSFER = true ] && echo "- 🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "## ✨ 主要功能
+1. argon主题
+2. argon主题设置
+3. 释放内存
+4. wol 网络唤醒
+5. 磁盘管理工具
+6. smartdns DNS防污染
+7. clash的图形代理软件
+8. aria2下载工具
+9. ZeroTier内网穿透
+10. Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)
+11. 迅雷快鸟
+12. CPU 性能优化调节
+13. CPU 占用率限制" >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
