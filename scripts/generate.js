@@ -117,7 +117,7 @@ const GenerateYml = (workflows) => {
       fs.writeFileSync(workflowsPath, template)
     })
   } catch (error) {
-    console.log(error);
+    throw error;
   } finally {
      // 清理文件
      exec(`rm -rf gl-infra-builder`);
