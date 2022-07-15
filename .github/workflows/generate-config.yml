@@ -1,5 +1,5 @@
 
-name: Generate workflows and build config
+name: GENERATE CONFIG
 
 on:
   repository_dispatch:
