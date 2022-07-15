@@ -95,7 +95,7 @@ const GenerateYml = (workflows) => {
         profilesYml.feeds = profilesYml.feeds.filter(feed => feed.name !== 'wifi_ax');
         profilesYml = deepmerge(profilesYml, {
           include: [
-            'wifi_ax',
+            'wifi-ax',
           ]
         });
       }
