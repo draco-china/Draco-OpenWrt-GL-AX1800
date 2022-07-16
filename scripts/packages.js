@@ -49,10 +49,10 @@ module.exports = [
     name: 'luci-app-xlnetacc',
     desc: '迅雷快鸟',
   },
-  {
-    name: 'luci-app-cpufreq',
-    desc: 'CPU 性能优化调节',
-  },
+  // {
+  //   name: 'luci-app-cpufreq',
+  //   desc: 'CPU 性能优化调节',
+  // },
   // {
   //   name: 'luci-app-samba4',
   //   desc: 'samba4文件共享',
