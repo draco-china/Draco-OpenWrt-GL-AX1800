@@ -105,7 +105,7 @@ jobs:
     - name: Build Packages
       run: |
         cd /workdir
-        git clone https://github.com/luochongjun/opkg-make-repo.git
+        git clone --depth=1 https://github.com/luochongjun/opkg-make-repo.git
         cd opkg-make-repo
         ./make-index /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx/packages
 
