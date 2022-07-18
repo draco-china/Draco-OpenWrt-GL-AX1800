@@ -51,6 +51,8 @@ jobs:
       run: |
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install coreutils diffutils findutils gawk gnu-getopt gnu-tar grep wget quilt xz
+        sudo python -m easy_install pyyaml
+        sudo easy_install  pyyaml
         echo 'export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"' >> ~/.bashrc
         echo 'export PATH="/usr/local/opt/findutils/libexec/gnubin:$PATH"' >> ~/.bashrc
         echo 'export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"' >> ~/.bashrc
