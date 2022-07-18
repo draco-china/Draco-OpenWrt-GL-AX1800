@@ -23,7 +23,7 @@ on:
     paths:
       - 'glinet-axt1800.yml'
     branches:
-      - master
+      - main
 
   schedule:
     - cron: 0 16 * * *
