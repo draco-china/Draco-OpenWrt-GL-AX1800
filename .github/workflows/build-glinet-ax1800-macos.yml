@@ -58,22 +58,21 @@ jobs:
         echo 'export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"' >> ~/.bashrc
         echo 'export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"' >> ~/.bashrc
         source ~/.bashrc
-        sudo systemsetup -gettimezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        sudo mkdir -p /Users/user/workdir
+        sudo chown $USER:$GROUPS /Users/user/workdir
 
     - name: Clone source code
-      working-directory: /workdir
+      working-directory: /Users/user/workdir
       run: |
         echo $PWD
         echo $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
-        ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
-        /bin/cp -rf $GITHUB_WORKSPACE/*.yml /workdir/gl-infra-builder/profiles
+        ln -sf /Users/user/workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
+        /bin/cp -rf $GITHUB_WORKSPACE/*.yml /Users/user/workdir/gl-infra-builder/profiles
 
     - name: run setup.py
       run: |
-        cd /workdir/gl-infra-builder
+        cd /Users/user/workdir/gl-infra-builder
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@github.com"
         python3 setup.py -c config-wlan-ap-5.4.yml
@@ -81,9 +80,9 @@ jobs:
     - name: Download package
       id: package
       run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt
+        cd /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt
         ./scripts/gen_config.py glinet-ax1800 glinet_depends
-        git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        git clone https://github.com/gl-inet/glinet4.x.git -b main /Users/user/workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
@@ -98,9 +97,9 @@ jobs:
     - name: Compile the firmware
       id: compile
       run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt
+        cd /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(expr $(nproc) + 1) GL_PKGDIR=/workdir/glinet/ipq60xx/ V=s
+        make -j$(expr $(nproc) + 1) GL_PKGDIR=/Users/user/workdir/glinet/ipq60xx/ V=s
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
@@ -108,17 +107,17 @@ jobs:
 
     - name: Build Packages
       run: |
-        cd /workdir
+        cd /Users/user/workdir
         git clone --depth=1 https://github.com/luochongjun/opkg-make-repo.git
         cd opkg-make-repo
-        ./make-index /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx/packages
+        ./make-index /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx/packages
 
     - name: Deploy Packages
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: ax1800-packages
-        publish_dir: /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx/packages
+        publish_dir: /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx/packages
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@github.com'
 
@@ -131,13 +130,13 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: /workdir/gl-infra-builder/wlan-ap/openwrt/bin
+        path: /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt/bin
 
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled() && !failure()
       run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
+        cd /Users/user/workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
         echo $PWD
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
