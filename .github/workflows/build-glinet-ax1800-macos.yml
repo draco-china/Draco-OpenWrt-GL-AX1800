@@ -49,7 +49,6 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        xcode-select --install
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         brew install coreutils diffutils findutils gawk gnu-getopt gnu-tar grep wget quilt xz
         echo 'export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"' >> ~/.bashrc
