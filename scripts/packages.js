@@ -49,6 +49,10 @@ module.exports = [
     name: 'luci-app-xlnetacc',
     desc: '迅雷快鸟',
   },
+  {
+    name: 'luci-app-appfilter',
+    desc: '应用过滤'
+  }
   // {
   //   name: 'luci-app-cpufreq',
   //   desc: 'CPU 性能优化调节',
@@ -125,7 +129,6 @@ module.exports = [
   //   name: 'luci-app-transmission',
   //   desc: 'BT下载工具',
   // },
-
   // {
   //   name: 'luci-app-dailybonus',
   //   desc: '京东签到服务',
