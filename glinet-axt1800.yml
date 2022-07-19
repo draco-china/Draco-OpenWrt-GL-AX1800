@@ -37,5 +37,6 @@ packages:
   - luci-app-zerotier
   - luci-app-turboacc
   - luci-app-xlnetacc
+  - luci-app-appfilter
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0
