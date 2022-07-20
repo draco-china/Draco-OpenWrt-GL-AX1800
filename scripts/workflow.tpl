@@ -68,10 +68,6 @@ jobs:
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
         cd $GITHUB_WORKSPACE
         [ -e ${build}.yml ] && mv ${build}.yml /workdir/gl-infra-builder/profiles
-        cd /workdir/gl-infra-builder/profiles
-        ls
-        cd $GITHUB_WORKSPACE/gl-infra-builder
-        ls
 
     - name: run setup.py
       run: |
