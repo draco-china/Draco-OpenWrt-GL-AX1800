@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: BUILD GLINET AX1800
+name: BUILD GLINET AX1800 4.X
 
 on:
   repository_dispatch:
@@ -21,7 +21,7 @@ on:
 
   push:
     paths:
-      - 'glinet-ax1800.yml'
+      - 'glinet-ax1800-4-x.yml'
     branches:
       - main
 
@@ -72,13 +72,13 @@ jobs:
         cd /workdir/gl-infra-builder
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@github.com"
-        python3 setup.py -c config-wlan-ap-5.4.yml
+        python3 setup.py -c config-wlan-ap.yml
 
     - name: Download package
       id: package
       run: |
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
-        ./scripts/gen_config.py glinet-ax1800 glinet_depends
+        ./scripts/gen_config.py glinet-ax1800-4-x glinet_depends
         git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -163,7 +163,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::AX1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "## 📦‍ 固件下载 | GLINET AX1800" >> release.txt
+        echo "## 📦‍ 固件下载 | GLINET AX1800 4.X" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo -e "## ✨ 主要功能\n1. argon主题\n2. argon主题设置\n3. 释放内存\n4. wol 网络唤醒\n5. 磁盘管理工具\n6. smartdns DNS防污染\n7. clash的图形代理软件\n8. aria2下载工具\n9. ZeroTier内网穿透\n10. Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)\n11. 迅雷快鸟\n12. 应用过滤" >> release.txt
         echo "::set-output name=status::success"
