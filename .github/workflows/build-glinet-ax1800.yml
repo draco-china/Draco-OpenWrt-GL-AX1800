@@ -66,8 +66,11 @@ jobs:
         echo $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
+        ls
         cd $GITHUB_WORKSPACE
+        ls
         [ -e glinet-ax1800.yml ] && mv glinet-ax1800.yml /workdir/gl-infra-builder/profiles
+        ls
 
     - name: run setup.py
       run: |
