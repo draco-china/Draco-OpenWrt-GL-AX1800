@@ -12,22 +12,22 @@ module.exports = [
     branch: 'oaf-5.1.0',
   },
   {
-    name: 'immortalwrt',
+    name: 'immortalwrt_luci',
     uri: 'https://github.com/immortalwrt/luci.git',
     branch: 'openwrt-21.02',
   },
   {
-    name: 'lienol',
+    name: 'lienol_packages',
     uri: 'https://github.com/Lienol/openwrt-package.git',
     branch: 'main',
   },
   {
-    name: 'kenzok8',
+    name: 'kenzok8_packages',
     uri: 'https://github.com/kenzok8/openwrt-packages.git',
     branch: 'master',
   },
   {
-    name: 'small',
+    name: 'kenzok8_small',
     uri: 'https://github.com/kenzok8/small.git',
     branch: 'master',
   },
