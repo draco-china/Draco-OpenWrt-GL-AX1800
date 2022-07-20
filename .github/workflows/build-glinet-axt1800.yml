@@ -126,7 +126,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: axt1800-packages
+        publish_branch: glinet-axt1800-packages
         publish_dir: $GITHUB_WORKSPACE/packages
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@github.com'
