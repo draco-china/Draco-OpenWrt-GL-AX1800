@@ -121,8 +121,8 @@ jobs:
         mkdir $GITHUB_WORKSPACE/packages/kmod
         cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
         /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages/kmod
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets
-        /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages
+        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/packages/arm_cortex-a7
+        /bin/cp -R ./* $GITHUB_WORKSPACE/packages
 
     - name: Upload All Packages
       uses: peaceiris/actions-gh-pages@v3
