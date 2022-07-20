@@ -66,10 +66,11 @@ jobs:
         echo $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
-        ls
         cd $GITHUB_WORKSPACE
-        ls
         [ -e ${build}.yml ] && mv ${build}.yml /workdir/gl-infra-builder/profiles
+        cd /workdir/gl-infra-builder/profiles
+        ls
+        cd $GITHUB_WORKSPACE/gl-infra-builder
         ls
 
     - name: run setup.py
