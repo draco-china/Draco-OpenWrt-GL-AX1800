@@ -29,7 +29,6 @@ jobs:
           publish_dir: ./
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@github.com'
-          commit_message: 'ci: 更新构建所需的配置文件'
           exclude_assets: ''
           keep_files: true
 
