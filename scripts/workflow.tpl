@@ -21,6 +21,7 @@ on:
 
   push:
     paths:
+      - '.github/workflows/${workflowName}.yml'
       - '${build}.yml'
     branches:
       - main
@@ -66,7 +67,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
         cd $GITHUB_WORKSPACE
-        [ -e ${build} ] && mv ${build} /workdir/gl-infra-builder/profiles
+        [ -e ${build}.yml ] && mv ${build}.yml /workdir/gl-infra-builder/profiles
 
     - name: run setup.py
       run: |

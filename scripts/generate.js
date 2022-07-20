@@ -104,6 +104,7 @@ const GenerateYml = (workflows) => {
       let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
       // 替换模板中的变量
       template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
+      template = template.replace(/\$\{workflowName\}/g, workflowName);
       template = template.replace(/\$\{build\}/g, build);
       template = template.replace(/\$\{model\}/g, workflow.model);
       template = template.replace(/\$\{config\}/g, workflow.config);
