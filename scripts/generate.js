@@ -94,7 +94,7 @@ const GenerateYml = (workflows) => {
       const yamlStr = yaml.dump(profilesYml, { lineWidth: -1, sortKeys });
       // 配置文件路径
       const build = (workflow.build || `glinet-${workflow.model}`);
-      const profilesPath = path.resolve(process.cwd(), `${build.replace(/\./g, '-')}.yml`);
+      const profilesPath = path.resolve(process.cwd(), `${build}.yml`);
       // 写入配置文件
       fs.writeFileSync(profilesPath, `---\n${yamlStr}`);
 
@@ -104,11 +104,10 @@ const GenerateYml = (workflows) => {
       let template = fs.readFileSync(path.resolve(__dirname, 'workflow.tpl'), 'utf8');
       // 替换模板中的变量
       template = template.replace(/\$\{name\}/g, workflowName.toUpperCase().replace(/-/g, ' '));
-      template = template.replace(/\$\{pathFile\}/g, `${build.replace(/\./g, '-')}.yml`);
+      template = template.replace(/\$\{build\}/g, build);
       template = template.replace(/\$\{model\}/g, workflow.model);
       template = template.replace(/\$\{config\}/g, workflow.config);
       template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
-      template = template.replace(/\$\{build\}/g, build.replace(/\./g, '-'));
       template = template.replace(/\$\{releaseTitle\}/g, `## 📦‍ 固件下载 | ${build.toUpperCase().replace(/-/g, ' ')}`);
       template = template.replace(/\$\{releasePackages\}/g, JSON.stringify([
         `## ✨ 主要功能`,
@@ -116,7 +115,7 @@ const GenerateYml = (workflows) => {
       ].join('\n')));
       template = template.replace(/\$\{length\}/g, workflows.length);
       // 写入workflow
-      const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName.replace(/\./g, '-')}.yml`);
+      const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName}.yml`);
       fs.writeFileSync(workflowsPath, template)
     })
   } catch (error) {

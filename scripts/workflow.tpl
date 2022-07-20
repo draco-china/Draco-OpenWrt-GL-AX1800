@@ -21,7 +21,7 @@ on:
 
   push:
     paths:
-      - '${pathFile}'
+      - '${build}.yml'
     branches:
       - main
 
@@ -65,7 +65,7 @@ jobs:
         echo $GITHUB_WORKSPACE
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
-        /bin/cp -rf $GITHUB_WORKSPACE/*.yml /workdir/gl-infra-builder/profiles
+        /bin/cp -rf $GITHUB_WORKSPACE/*yml /workdir/gl-infra-builder/profiles
 
     - name: run setup.py
       run: |
