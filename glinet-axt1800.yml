@@ -49,3 +49,4 @@ packages:
   - luci-app-turboacc
   - luci-app-xlnetacc
   - luci-app-appfilter
+  - luci-app-cpufreq

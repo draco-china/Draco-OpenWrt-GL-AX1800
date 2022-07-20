@@ -46,5 +46,6 @@ packages:
   - luci-app-turboacc
   - luci-app-xlnetacc
   - luci-app-appfilter
+  - luci-app-cpufreq
 diffconfig: |
   CONFIG_KERNEL_IPQ_MEM_PROFILE=0

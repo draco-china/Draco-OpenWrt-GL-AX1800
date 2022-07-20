@@ -121,8 +121,8 @@ jobs:
         mkdir $GITHUB_WORKSPACE/packages/kmod
         cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
         /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages/kmod
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets
-        /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages
+        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/packages/arm_cortex-a7
+        /bin/cp -R ./* $GITHUB_WORKSPACE/packages
 
     - name: Upload All Packages
       uses: peaceiris/actions-gh-pages@v3
@@ -167,7 +167,7 @@ jobs:
         touch release.txt
         echo "## 📦‍ 固件下载 | GLINET AX1800" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo -e "## ✨ 主要功能\n1. argon主题\n2. argon主题设置\n3. 释放内存\n4. wol 网络唤醒\n5. 磁盘管理工具\n6. smartdns DNS防污染\n7. clash的图形代理软件\n8. aria2下载工具\n9. ZeroTier内网穿透\n10. Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)\n11. 迅雷快鸟\n12. 应用过滤" >> release.txt
+        echo -e "## ✨ 主要功能\n1. argon主题\n2. argon主题设置\n3. 释放内存\n4. wol 网络唤醒\n5. 磁盘管理工具\n6. smartdns DNS防污染\n7. clash的图形代理软件\n8. aria2下载工具\n9. ZeroTier内网穿透\n10. Turbo ACC 网络加速(支持 Fast Path 或者 硬件 NAT)\n11. 迅雷快鸟\n12. 应用过滤\n13. CPU 性能优化调节" >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
