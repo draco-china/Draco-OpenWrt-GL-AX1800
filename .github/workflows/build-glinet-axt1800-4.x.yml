@@ -21,6 +21,7 @@ on:
 
   push:
     paths:
+      - '.github/workflows/build-glinet-axt1800-4.x.yml'
       - 'glinet-axt1800-4.x.yml'
     branches:
       - main
@@ -66,7 +67,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
         cd $GITHUB_WORKSPACE
-        [ -e glinet-axt1800-4.x ] && mv glinet-axt1800-4.x /workdir/gl-infra-builder/profiles
+        [ -e glinet-axt1800-4.x.yml ] && mv glinet-axt1800-4.x.yml /workdir/gl-infra-builder/profiles
 
     - name: run setup.py
       run: |
