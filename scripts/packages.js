@@ -52,11 +52,11 @@ module.exports = [
   {
     name: 'luci-app-appfilter',
     desc: '应用过滤'
-  }
-  // {
-  //   name: 'luci-app-cpufreq',
-  //   desc: 'CPU 性能优化调节',
-  // },
+  },
+  {
+    name: 'luci-app-cpufreq',
+    desc: 'CPU 性能优化调节',
+  },
   // {
   //   name: 'luci-app-samba4',
   //   desc: 'samba4文件共享',
