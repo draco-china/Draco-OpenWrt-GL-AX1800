@@ -118,9 +118,9 @@ jobs:
         cd $GITHUB_WORKSPACE/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
         mkdir $GITHUB_WORKSPACE/packages
         mkdir $GITHUB_WORKSPACE/packages/kmod
-        /bin/cp -rf ./packages/* $GITHUB_WORKSPACE/packages/kmod
+        /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages/kmod
         cd $GITHUB_WORKSPACE/gl-infra-builder/wlan-ap/openwrt/bin/packages
-        /bin/cp -rf ./packages/* $GITHUB_WORKSPACE/packages
+        /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages
 
     - name: Upload All Packages
       uses: peaceiris/actions-gh-pages@v3
