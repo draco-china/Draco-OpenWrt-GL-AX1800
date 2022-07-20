@@ -126,7 +126,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: ${model}-packages
+        publish_branch: ${build}-packages
         publish_dir: $GITHUB_WORKSPACE/packages
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@github.com'
