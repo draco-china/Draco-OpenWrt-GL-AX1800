@@ -34,9 +34,8 @@ Draco-OpenWrt-GL-AX1800
 - *通过  `openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar` 升级*
 - *进入`uboot`，选择 `openwrt-ipq807x-glinet_ax1800-squashfs-nand-factory.img` 文件升级*
 - 部分 `feeds` & `packages` 已经注释移除，可自行 `fork` 编译定制
-- 北京时间每天 `23:00` 定时更新 `glinet-ax1800.yml` & `glinet-axt1800.yml` 等配置文件生成的 `yml`
-- 北京时间每天 `0:00` 定时编译，`Release` 中只保留最新版本
-- 不需要定时执行的可以将对应的工作流 `schedule` 删除或者注释
+- 北京时间每天 `0:00` 定时检测 `官方更新` `feeds`  `packages` 更新, 如果上游更新将自动重新编译最新固件，`Release` 中只保留最新版本
+- 不需要(定时/监听)执行的可以将对应的工作流 `schedule/push` 删除或者注释
 - 历史版本在 `Actions` 中选择一个已经运行完成且成功的 `workflow` 在页面底部可以看到 `Annotations` 和 `Artifacts`
 - `Annotations` 中的网盘失效时间一般是 1-3 天, `Artifacts` 需要登录 Github 才能下载
 - `Actions` 运行需要设置 `Actions Secrets`, 查看[配置令牌](#配置令牌)

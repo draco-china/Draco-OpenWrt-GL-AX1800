@@ -13,7 +13,7 @@ on:
 
 
   schedule:
-    - cron: 0 15 * * *
+    - cron: 0 16 * * *
 
 jobs:
   deploy:
