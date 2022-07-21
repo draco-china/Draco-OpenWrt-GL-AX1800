@@ -1,9 +1,9 @@
 ---
-profile: glinet_axt1800
+profile: glinet_ax1800
 target: ipq807x
 subtarget: ipq60xx
-description: Build image for the GL.iNET AXT1800
-image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysupgrade.tar
+description: Build image for the GL.iNET AX1800
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
 feeds:
   - name: ipq807x
     path: ../../feeds/ipq807x
@@ -24,7 +24,7 @@ feeds:
   - name: kenzok8_packages
     uri: https://github.com/kenzok8/openwrt-packages.git
     branch: master
-    revision: 3493a87e1c2cbdf5f5e2b952e3aa0a11e4166fc4
+    revision: 5173253721ecc1d9d5fc3a42f28189a4d2d892aa
   - name: kenzok8_small
     uri: https://github.com/kenzok8/small.git
     branch: master
@@ -32,7 +32,6 @@ feeds:
 include:
   - wifi-ax
 packages:
-  - kmod-hwmon-pwmfan
   - wget-ssl
   - luci-theme-argon
   - luci-app-argon-config

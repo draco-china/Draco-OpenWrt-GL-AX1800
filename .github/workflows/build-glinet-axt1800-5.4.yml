@@ -22,7 +22,7 @@ on:
   push:
     paths:
       - '.github/workflows/build-glinet-axt1800-5.4.yml'
-      - 'glinet-ax1800-5-4.yml'
+      - 'glinet-axt1800-5-4.yml'
     branches:
       - main
 
@@ -67,7 +67,7 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH gl-infra-builder
         ln -sf /workdir/gl-infra-builder $GITHUB_WORKSPACE/gl-infra-builder
         cd $GITHUB_WORKSPACE
-        [ -e glinet-ax1800-5-4.yml ] && mv glinet-ax1800-5-4.yml /workdir/gl-infra-builder/profiles
+        [ -e glinet-axt1800-5-4.yml ] && mv glinet-axt1800-5-4.yml /workdir/gl-infra-builder/profiles
 
     - name: run setup.py
       run: |
@@ -80,7 +80,7 @@ jobs:
       id: package
       run: |
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
-        ./scripts/gen_config.py glinet-ax1800-5-4 glinet_depends
+        ./scripts/gen_config.py glinet-axt1800-5-4 glinet_depends
         git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
         ./scripts/feeds update -a
         ./scripts/feeds install -a
@@ -128,7 +128,7 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: glinet-ax1800-5-4-packages
+        publish_branch: glinet-axt1800-5-4-packages
         publish_dir: $GITHUB_WORKSPACE/packages
         user_name: 'github-actions[bot]'
         user_email: 'github-actions[bot]@github.com'

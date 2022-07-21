@@ -7,8 +7,6 @@ image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysup
 feeds:
   - name: ipq807x
     path: ../../feeds/ipq807x
-  - name: wifi_ax
-    path: ../../feeds/wifi-ax
   - name: gl_feeds_common
     uri: https://github.com/gl-inet/gl-feeds.git
     revision: 06f41ac79c434043e7dd15c3ab4bb09930ddfaf3
@@ -31,12 +29,11 @@ feeds:
     uri: https://github.com/kenzok8/small.git
     branch: master
     revision: ba0e907af63c5f7dff8a0a513076915a15b75b5f
-include: []
+include:
+  - wifi-ax
 packages:
   - kmod-hwmon-pwmfan
-  - wireless-regdb
   - wget-ssl
-  - kmod-wireguard-backport
   - luci-theme-argon
   - luci-app-argon-config
   - luci-app-ramfree
@@ -50,3 +47,5 @@ packages:
   - luci-app-xlnetacc
   - luci-app-appfilter
   - luci-app-cpufreq
+diffconfig: |
+  CONFIG_KERNEL_IPQ_MEM_PROFILE=0
