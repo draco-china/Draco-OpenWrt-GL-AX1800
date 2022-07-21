@@ -115,24 +115,6 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: /workdir/gl-infra-builder/wlan-ap/openwrt/bin
 
-    - name: Merge All Packages
-      run: |
-        mkdir $GITHUB_WORKSPACE/packages
-        mkdir $GITHUB_WORKSPACE/packages/kmod
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
-        /bin/cp -R ./packages/* $GITHUB_WORKSPACE/packages/kmod
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/packages/arm_cortex-a7
-        /bin/cp -R ./* $GITHUB_WORKSPACE/packages
-
-    - name: Upload All Packages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        personal_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: glinet-axt1800-5-4-packages
-        publish_dir: $GITHUB_WORKSPACE/packages
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@github.com'
-
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled() && !failure()
