@@ -23,14 +23,18 @@ feeds:
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
     revision: 786e681d614ca9d4da771e993e9ba12f587c036f
+  - name: lienol_packages
+    uri: https://github.com/Lienol/openwrt-package.git
+    branch: main
+    revision: d607aef7267d3e3c9c13a74d3f40fbbbfd4020e1
   - name: kenzok8_packages
     uri: https://github.com/kenzok8/openwrt-packages.git
     branch: master
-    revision: 46856befbe88ab4b72829cb45531cee730cf7d84
+    revision: 635062fcabad92a5dd74998108d54a0cadfdcbc5
   - name: kenzok8_small
     uri: https://github.com/kenzok8/small.git
     branch: master
-    revision: ba0e907af63c5f7dff8a0a513076915a15b75b5f
+    revision: 5afbe3bba9a2953f506074cc0d943580a38f589e
 include: []
 packages:
   - wireless-regdb
@@ -49,3 +53,9 @@ packages:
   - luci-app-xlnetacc
   - luci-app-appfilter
   - luci-app-cpufreq
+  - luci-app-ttyd
+  - luci-app-passwall
+  - luci-app-ssr-plus
+  - luci-app-serverchan
+  - luci-app-transmission
+  - luci-app-dailybonus
