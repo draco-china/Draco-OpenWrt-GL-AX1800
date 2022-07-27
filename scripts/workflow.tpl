@@ -85,6 +85,8 @@ jobs:
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
+        cd /workdir/gl-infra-builder/wlan-ap/openwrt/files/etc
+        echo "$(date +"%Y.%m.%d")" >./glversion
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
