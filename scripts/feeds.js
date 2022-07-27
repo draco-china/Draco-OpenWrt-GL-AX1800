@@ -16,11 +16,11 @@ module.exports = [
     uri: 'https://github.com/immortalwrt/luci.git',
     branch: 'openwrt-21.02',
   },
-  {
-    name: 'lienol_packages',
-    uri: 'https://github.com/Lienol/openwrt-package.git',
-    branch: 'main',
-  },
+  // {
+  //   name: 'lienol_packages',
+  //   uri: 'https://github.com/Lienol/openwrt-package.git',
+  //   branch: 'main',
+  // },
   {
     name: 'kenzok8_packages',
     uri: 'https://github.com/kenzok8/openwrt-packages.git',
