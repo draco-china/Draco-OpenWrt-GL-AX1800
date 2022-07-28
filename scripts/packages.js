@@ -81,14 +81,14 @@ module.exports = [
   //   name: 'luci-app-syncdial',
   //   desc: '多拨虚拟网卡（需要光猫支持多拨）',
   // },
-  {
-    name: 'luci-app-passwall',
-    desc: 'passwall代理软件',
-  },
-  {
-    name: 'luci-app-ssr-plus',
-    desc: 'ssr-plus 代理软件',
-  },
+  // {
+  //   name: 'luci-app-passwall',
+  //   desc: 'passwall代理软件',
+  // },
+  // {
+  //   name: 'luci-app-ssr-plus',
+  //   desc: 'ssr-plus 代理软件',
+  // },
   // {
   //   name: 'luci-app-aliddns',
   //   desc: '阿里云ddns插件',
