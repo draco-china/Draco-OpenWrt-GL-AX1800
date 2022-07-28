@@ -48,8 +48,6 @@ packages:
   - luci-app-appfilter
   - luci-app-cpufreq
   - luci-app-ttyd
-  - luci-app-passwall
-  - luci-app-ssr-plus
   - luci-app-serverchan
   - luci-app-transmission
   - luci-app-dailybonus
