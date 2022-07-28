@@ -1,6 +1,6 @@
 # GL-AX1800 & GL-AXT1800 固件
 
-[![固件更新](https://img.shields.io/badge/dynamic/json?style=flat-square&label=固件更新&query=0.published_at&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fdraco-china%2FDraco-OpenWrt-GL-AX1800%2Freleases)](https://github.com/Draco-china/Draco-OpenWrt-GL-AX1800/actions)
+[![固件更新](https://img.shields.io/badge/dynamic/json?style=flat-square&label=固件更新&query=0.published_at&url=https://api.github.com/repos/draco-china/Draco-OpenWrt-GL-AX1800/releases)](https://github.com/Draco-china/Draco-OpenWrt-GL-AX1800/actions)
 [![仓库地址](https://img.shields.io/badge/仓库地址-点我-brightgreen?style=flat-square)](https://github.com/draco-china/Draco-OpenWrt-GL-AX1800)
 [![固件下载](https://img.shields.io/badge/固件下载-点我-brightgreen?style=flat-square)](https://github.com/draco-china/Draco-OpenWrt-GL-AX1800/releases)
 [![界面预览](https://img.shields.io/badge/界面预览-点我-brightgreen?style=flat-square)](#界面预览)
